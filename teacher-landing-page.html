@@ -16,37 +16,16 @@
      dropped into a GHL Funnel/Website step as a full-page "Custom Code"
      element, or pasted into GHL's page builder as a Custom HTML section.
 
-  2. GHL SIGNUP / OPT-IN FORM PLACEMENT
-     Find the element with id="ghl-signup-form-slot" (search for
-     "GHL EMBED POINT" below). Delete the placeholder markup inside it and
-     paste your GHL Form embed (First Name, Last Name, Email, School/Org).
-     This form should be a free opt-in form — NOT a payment/order form.
-     The surrounding `.signup-card` already provides the white card,
-     padding, and rounded corners, so a native GHL form will sit correctly
-     without its own card/background styling.
+  2. GHL SIGNUP / OPT-IN FORM
+     The live "Form for Teacher Signup" GHL embed (id="ghl-signup-form-slot",
+     search for "GHL EMBED POINT" below) is already wired in — iframe +
+     the form_embed.js resize script. It handles its own fields, submit
+     button, validation, and confirmation/redirect behavior as configured
+     in GHL, so there is no separate custom submit button or client-side
+     "thank you" state on this page for it. If you need to change the
+     form, edit it in GHL and swap the src/data-form-id here to match.
 
-  3. PRIMARY CTA BUTTON
-     The big pink "Create My Free Faculty Account" button
-     (id="signup-submit-btn") is provided for visual/brand consistency and
-     also powers the demo "thank you" state below (see the SIGNUP DEMO
-     LOGIC comment in the script at the bottom). If your GHL form has its
-     own submit button, either:
-       a) Hide GHL's native submit button and trigger it from this button
-          via GHL's "on form submit" JS trigger / form action, OR
-       b) Delete this custom button and re-style GHL's native submit
-          button (color: var(--pink-dark), label: "Create My Free Faculty
-          Account") directly in the GHL builder.
-     Do not ship both as separate, independently-functioning submit actions.
-
-  4. AFTER SUBMIT
-     On real submission, configure your GHL workflow to email the teacher
-     their login details and their unique student voucher code, and/or
-     redirect to a dedicated teacher onboarding page. The inline "You're
-     In" panel in this file (#signup-success) is a placeholder confirmation
-     state for when the page is used standalone; wire it to (or replace it
-     with) your actual GHL "on submit" redirect/action.
-
-  5. All primary CTAs on this page point to the same #signup section by
+  3. All primary CTAs on this page scroll to the same #signup section by
      design — there is only one conversion goal on this page.
 ==================================================================================
 -->
@@ -260,29 +239,19 @@
   .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
     flex-shrink: 1;
     min-width: 0;
+    overflow: hidden;
   }
 
   .logo img {
-    height: 34px;
-    width: 34px;
+    height: 44px;
+    width: auto;
+    max-width: 220px;
     object-fit: contain;
     flex-shrink: 0;
   }
-
-  .logo-wordmark {
-    font-weight: 800;
-    font-size: 1.08rem;
-    color: var(--teal-dark);
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .logo-wordmark .accent { color: var(--pink); }
 
   .badge-audience {
     display: inline-block;
@@ -380,7 +349,7 @@
 
   @media (max-width: 480px) {
     .header-inner { padding: 0 14px; gap: 8px; }
-    .logo-wordmark { font-size: 0.86rem; max-width: 30vw; }
+    .logo img { height: 36px; max-width: 34vw; }
     .badge-audience { display: none; }
     .header-cta-group { gap: 8px; }
     .header-cta-group .btn { padding: 10px 12px; font-size: 0.82rem; min-height: 40px; }
@@ -630,23 +599,6 @@
 
   .gap-card--students .mark { background: #F4D9B8; color: #8A5A1E; }
   .gap-card--stp .mark { background: var(--teal); color: var(--white); }
-
-  .why-visual {
-    margin-top: 48px;
-    text-align: center;
-  }
-
-  .why-visual img {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card-lg);
-    border: 1px solid var(--border-soft);
-    max-width: 100%;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: var(--bg-section);
-    margin: 0 auto;
-  }
 
   /* ---------------------------------- FEATURE CARDS ---------------------------------- */
 
@@ -1019,21 +971,6 @@
     max-width: 22ch;
   }
 
-  .journey-visual {
-    margin-top: 48px;
-    text-align: center;
-  }
-
-  .journey-visual img {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card-lg);
-    border: 1px solid var(--border-soft);
-    max-width: 100%;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: var(--bg-section);
-  }
 
   /* ---------------------------------- EDUCATOR BENEFITS ---------------------------------- */
 
@@ -1192,49 +1129,6 @@
     margin: 0 0 24px;
   }
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-
-  @media (max-width: 480px) {
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-  .form-row .form-field { margin-bottom: 0; }
-
-  .form-field label {
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
-  .form-field .optional-tag {
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: none;
-    letter-spacing: 0;
-  }
-
-  .form-field input {
-    font-family: inherit;
-    font-size: 0.98rem;
-    padding: 13px 14px;
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--border-soft);
-    background: var(--bg-light);
-    color: var(--text-dark);
-  }
-
-  .form-field input:focus {
-    outline: none;
-    border-color: var(--teal);
-    background: var(--white);
-  }
-
   .signup-trust-row {
     display: flex;
     align-items: center;
@@ -1244,25 +1138,12 @@
     background: var(--bg-section);
     border-radius: var(--radius-sm);
     padding: 11px 14px;
-    margin: 18px 0 20px;
+    margin: 0 0 20px;
   }
 
-  #signup-success {
-    text-align: center;
-    padding: 12px 4px 4px;
-  }
-
-  #signup-success .success-icon {
-    font-size: 2.4rem;
-    margin-bottom: 12px;
-  }
-
-  #signup-success h3 { margin-bottom: 10px; }
-
-  #signup-success p {
-    font-size: 0.96rem;
-    color: var(--text-muted);
-    margin: 0 0 8px;
+  .signup-iframe-wrap {
+    width: 100%;
+    min-height: 554px;
   }
 
   /* ---------------------------------- FOOTER ---------------------------------- */
@@ -1327,8 +1208,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="logo" href="#top" aria-label="Speech Therapy Plans home">
-      <img src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a7986c1888087201951c744.png" alt="Speech Therapy Plans logo">
-      <span class="logo-wordmark">Speech Therapy<span class="accent">Plans</span></span>
+      <img src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a7986c1888087201951c744.png" alt="Speech Therapy Plans">
     </a>
     <span class="badge-audience">For Educators</span>
 
@@ -1438,10 +1318,6 @@
             <li><span class="mark">✓</span> One place students can return to all program</li>
           </ul>
         </div>
-      </div>
-
-      <div class="why-visual reveal">
-        <img src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a7987329a9c7792ea690d16.png" alt="Speech Therapy Plans platform overview">
       </div>
     </div>
   </section>
@@ -1629,10 +1505,6 @@
           <div><h4>Tracking Progress</h4><p>Documenting outcomes along the way</p></div>
         </div>
       </div>
-
-      <div class="journey-visual reveal">
-        <img src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a79873203343f290f826337.png" alt="Speech Therapy Plans platform in use">
-      </div>
     </div>
   </section>
 
@@ -1746,57 +1618,40 @@
     </div>
 
     <div class="signup-card">
-      <form id="teacher-signup-form" novalidate>
-        <h3>Create Your Free Faculty Account</h3>
-        <p class="signup-sub">Takes about a minute. No credit card required.</p>
+      <h3>Create Your Free Faculty Account</h3>
+      <p class="signup-sub">Takes about a minute. No credit card required.</p>
+      <p class="signup-trust-row">🔒 <span>Free faculty account. No credit card required, ever.</span></p>
 
-        <!-- ================= GHL EMBED POINT =================
-             Replace the contents of #ghl-signup-form-slot below with your
-             GoHighLevel opt-in Form embed (First Name, Last Name, Email,
-             optional School/Organization). Remove the native <div> fields
-             and the #teacher-signup-form wrapper's default submit handling
-             if the GHL form supplies its own. See "INTEGRATION NOTES" at
-             the top of this file.
-        ===================================================== -->
-        <div id="ghl-signup-form-slot">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="tf-first-name">First name</label>
-              <input type="text" id="tf-first-name" name="first_name" autocomplete="given-name" required>
-            </div>
-            <div class="form-field">
-              <label for="tf-last-name">Last name</label>
-              <input type="text" id="tf-last-name" name="last_name" autocomplete="family-name" required>
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="tf-email">Email address</label>
-            <input type="email" id="tf-email" name="email" autocomplete="email" required>
-          </div>
-          <div class="form-field">
-            <label for="tf-school">School / University / Organization <span class="optional-tag">(optional)</span></label>
-            <input type="text" id="tf-school" name="school" autocomplete="organization">
-          </div>
-        </div>
-
-        <p class="signup-trust-row">🔒 <span>Free faculty account. No credit card required, ever.</span></p>
-
-        <button type="submit" id="signup-submit-btn" class="btn btn-primary btn-primary-lg" style="max-width:100%;">
-          Create My Free Faculty Account
-        </button>
-        <p class="microcopy microcopy--center">Free for teachers. No credit card required.</p>
-      </form>
-
-      <div id="signup-success" hidden>
-        <div class="success-icon">🎉</div>
-        <h3>You're In!</h3>
-        <p>Check your inbox for your login details.</p>
-        <p>Your unique student voucher code will be sent to your email shortly — share it with your class whenever you're ready.</p>
+      <!-- ================= GHL EMBED POINT =================
+           Live "Form for Teacher Signup" embed. Handles its own fields,
+           submit button, validation, and confirmation/redirect as
+           configured in GHL. See "INTEGRATION NOTES" at the top of this
+           file if this form is ever swapped out.
+      ===================================================== -->
+      <div id="ghl-signup-form-slot" class="signup-iframe-wrap">
+        <iframe
+            src="https://link.thinkingcreatives.com/widget/form/MwjWW9aKi1uYbomLyftN"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-MwjWW9aKi1uYbomLyftN"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form for Teacher Signup"
+            data-height="554"
+            data-layout-iframe-id="inline-MwjWW9aKi1uYbomLyftN"
+            data-form-id="MwjWW9aKi1uYbomLyftN"
+            title="Form for Teacher Signup">
+        </iframe>
       </div>
     </div>
   </section>
 
 </main>
+<script src="https://link.thinkingcreatives.com/js/form_embed.js"></script>
 
 <!-- ============================= FOOTER ============================= -->
 <footer class="site-footer">
@@ -1885,29 +1740,6 @@
         el.classList.add("in-view");
       });
     }
-
-    /* ---------- SIGNUP DEMO LOGIC ----------
-       This is a client-side placeholder only: it swaps the form for a
-       confirmation panel so the page has a working end-to-end demo when
-       viewed standalone. Wire #teacher-signup-form (or the GHL form that
-       replaces #ghl-signup-form-slot) to your real GHL workflow so it
-       actually creates the account, emails login details, and generates
-       the teacher's unique student voucher code.
-    ------------------------------------------ */
-    var signupForm = document.getElementById("teacher-signup-form");
-    var signupSuccess = document.getElementById("signup-success");
-
-    signupForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!signupForm.checkValidity()) {
-        signupForm.reportValidity();
-        return;
-      }
-      signupForm.hidden = true;
-      signupSuccess.hidden = false;
-      signupSuccess.setAttribute("tabindex", "-1");
-      signupSuccess.focus();
-    });
   })();
 </script>
 
