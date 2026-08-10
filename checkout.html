@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Your Free Trial | Speech Therapy Plans</title>
+<meta name="description" content="Start your 14-day free trial of the Speech Therapy Plans Student Membership.">
+
+<!--
+==================================================================================
+  SPEECH THERAPY PLANS — CHECKOUT PAGE (Student Membership / 14-Day Free Trial)
+==================================================================================
+  INTEGRATION NOTES FOR GOHIGHLEVEL
+  ----------------------------------------------------------------------------
+  1. This file is a self-contained page (HTML + CSS + a small amount of JS).
+     It can be dropped into a GHL Funnel/Website step as a "Custom Code" /
+     full-page HTML element, or the <style> and body markup can be pasted
+     into GHL's page builder as a Custom HTML section.
+
+  2. GHL PAYMENT / ORDER FORM PLACEMENT
+     Find the element with id="ghl-payment-form-slot" (search for
+     "GHL EMBED POINT" below). Delete the placeholder <div class="ghl-placeholder">
+     markup inside it and paste your GHL Order Form / Payment Form embed
+     (element or embed snippet) in its place. The surrounding
+     `.checkout-card` provides the white card, padding, and rounded corners,
+     so the native GHL form will already sit correctly inside the design —
+     it does not need its own card/background styling.
+
+  3. PRIMARY CTA BUTTON
+     The big pink "Start My 14-Day Free Trial" button (id="start-trial-btn")
+     is provided for visual/brand consistency. If your GHL Order Form
+     includes its own built-in submit button, you have two options:
+        a) Hide GHL's native submit button and use GHL's "on form submit"
+           JS trigger (or a form action) tied to this button, OR
+        b) Delete this custom button and re-style/re-label GHL's native
+           submit button (color: var(--pink), label: "Start My 14-Day Free
+           Trial") directly in the GHL builder.
+     Do not ship both as separate, independently-functioning submit actions.
+
+  4. All copy below is placeholder/editable — marked with data-editable
+     attributes where useful — and can be updated directly in the HTML.
+==================================================================================
+-->
+
+<style>
+  :root {
+    --teal: #34909D;
+    --teal-bright: #5CAEB9;
+    --teal-dark: #167582;
+    --bg-light: #EBF6F8;
+    --bg-section: #E7F0F2;
+    --white: #FFFFFF;
+    --text-dark: #263238;
+    --text-muted: #5A6B70;
+    --pink: #E83E83;
+    --pink-dark: #C92D6D;
+    --border-soft: #D9E9EC;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --shadow-card: 0 10px 30px rgba(38, 56, 60, 0.08);
+    --shadow-card-lg: 0 16px 40px rgba(22, 117, 130, 0.12);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img, svg { max-width: 100%; display: block; }
+
+  a { color: var(--teal-dark); }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* ---------------------------------- HEADER ---------------------------------- */
+
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--teal-dark);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .logo-text-primary { color: var(--teal-dark); }
+  .logo-text-accent { color: var(--pink); }
+
+  /* ---------------------------------- LAYOUT ---------------------------------- */
+
+  .checkout-page {
+    padding: 40px 20px 64px;
+  }
+
+  .checkout-container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 44px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .checkout-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* ---------------------------------- LEFT COLUMN: ORDER SUMMARY ---------------------------------- */
+
+  .order-summary {
+    position: sticky;
+    top: 28px;
+  }
+
+  @media (max-width: 900px) {
+    .order-summary { position: static; }
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: var(--bg-section);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .checkout-headline {
+    font-size: clamp(1.6rem, 4vw, 2.15rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .checkout-subcopy {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    margin: 0 0 24px;
+    max-width: 46ch;
+  }
+
+  /* Membership summary card */
+  .summary-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .summary-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .summary-plan-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: var(--text-dark);
+  }
+
+  .summary-plan-sub {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+
+  .summary-price {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .summary-price .amount {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--teal-dark);
+  }
+
+  .summary-price .period {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .trial-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 144, 157, 0.1);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    margin-top: 16px;
+  }
+
+  .summary-charge-rows {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .charge-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 0.95rem;
+  }
+
+  .charge-row .label { color: var(--text-muted); }
+  .charge-row .value { font-weight: 700; color: var(--text-dark); }
+  .charge-row.due-today .value { color: var(--teal-dark); font-size: 1.05rem; }
+
+  .benefits-list {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.98rem;
+    color: var(--text-dark);
+  }
+
+  .benefits-list .check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  /* ---------------------------------- RIGHT COLUMN: PAYMENT ---------------------------------- */
+
+  .payment-panel { min-width: 0; }
+
+  .checkout-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card-lg);
+    padding: 32px;
+    border: 1px solid var(--border-soft);
+  }
+
+  @media (max-width: 480px) {
+    .checkout-card { padding: 24px 18px; }
+  }
+
+  .checkout-card-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: var(--text-dark);
+  }
+
+  .checkout-card-subheading {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+  }
+
+  /* GHL embed slot */
+  #ghl-payment-form-slot {
+    margin-bottom: 20px;
+  }
+
+  .ghl-placeholder {
+    border: 2px dashed var(--border-soft);
+    border-radius: var(--radius-md);
+    background: var(--bg-light);
+    padding: 40px 20px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    color: var(--text-muted);
+  }
+
+  .ghl-placeholder .ghl-placeholder-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--teal);
+  }
+
+  .ghl-placeholder strong {
+    color: var(--teal-dark);
+    font-size: 1rem;
+  }
+
+  .ghl-placeholder span {
+    font-size: 0.85rem;
+    max-width: 32ch;
+  }
+
+  /* Trust row */
+  .trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: var(--bg-section);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+  }
+
+  .trust-row strong { color: var(--text-dark); }
+
+  /* Primary CTA */
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--pink-dark);
+    color: var(--white);
+    font-size: 1.08rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 17px 20px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+    min-height: 52px;
+  }
+
+  .btn-primary:hover { background: var(--pink); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-primary:focus-visible {
+    outline: 3px solid var(--teal-dark);
+    outline-offset: 2px;
+  }
+
+  .cta-disclosure {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 14px 0 0;
+    line-height: 1.5;
+  }
+
+  .fine-print {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 16px 0 0;
+    line-height: 1.5;
+  }
+
+  .fine-print a { color: var(--text-muted); text-decoration: underline; }
+
+  /* ---------------------------------- GROUP RATE (SECONDARY) ---------------------------------- */
+
+  .group-rate {
+    max-width: 720px;
+    margin: 40px auto 0;
+    background: var(--bg-section);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .group-rate-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 6px;
+  }
+
+  .group-rate-copy {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    max-width: 52ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 11px 22px;
+    border: 1.5px solid var(--teal);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    min-height: 44px;
+    line-height: 1.2;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(52, 144, 157, 0.08);
+  }
+
+  /* ---------------------------------- FOOTER ---------------------------------- */
+
+  .site-footer {
+    background: var(--bg-section);
+    padding: 28px 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .site-footer .footer-brand {
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { text-decoration: underline; }
+
+  .footer-links li:not(:last-child)::after {
+    content: "";
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#" aria-label="Speech Therapy Plans home">
+    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="24" cy="24" r="24" fill="#EBF6F8"/>
+      <ellipse cx="24" cy="27" rx="13" ry="10" fill="#5CAEB9"/>
+      <circle cx="16" cy="17" r="5.5" fill="#5CAEB9"/>
+      <circle cx="32" cy="17" r="5.5" fill="#5CAEB9"/>
+      <circle cx="16" cy="17" r="2.4" fill="#167582"/>
+      <circle cx="32" cy="17" r="2.4" fill="#167582"/>
+      <path d="M18 29c1.6 1.6 4 2.4 6 2.4s4.4-.8 6-2.4" stroke="#167582" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="logo-text-primary">Speech Therapy<span class="logo-text-accent">Plans</span></span>
+  </a>
+</header>
+
+<main class="checkout-page">
+  <div class="checkout-container">
+
+    <div class="checkout-grid">
+
+      <!-- ============================= LEFT COLUMN: ORDER SUMMARY ============================= -->
+      <section class="order-summary" aria-labelledby="order-summary-heading">
+
+        <span class="badge-pill" data-editable="badge-label">Student Membership</span>
+
+        <h1 id="order-summary-heading" class="checkout-headline" data-editable="headline">You're Almost In! 🐸</h1>
+
+        <p class="checkout-subcopy" data-editable="subcopy">
+          Get everything you need to walk into every placement prepared.
+        </p>
+
+        <div class="summary-card">
+          <div class="summary-card-header">
+            <div>
+              <p class="summary-plan-name" data-editable="plan-name">Student Membership</p>
+              <p class="summary-plan-sub">Billed annually after your trial</p>
+            </div>
+            <div class="summary-price">
+              <div class="amount" data-editable="plan-price">$119</div>
+              <div class="period">/ year</div>
+            </div>
+          </div>
+
+          <span class="trial-chip">🎉 14-Day Free Trial</span>
+
+          <div class="summary-charge-rows">
+            <div class="charge-row due-today">
+              <span class="label">Due today</span>
+              <span class="value">$0.00</span>
+            </div>
+            <div class="charge-row">
+              <span class="label">After 14-day trial</span>
+              <span class="value">$119.00 / year</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="benefits-list" aria-label="What's included in the Student Membership">
+          <li><span class="check" aria-hidden="true">✓</span> 2,000+ therapy materials</li>
+          <li><span class="check" aria-hidden="true">✓</span> Pre-made therapy plans</li>
+          <li><span class="check" aria-hidden="true">✓</span> Caseload management</li>
+          <li><span class="check" aria-hidden="true">✓</span> Assessments &amp; progress tools</li>
+          <li><span class="check" aria-hidden="true">✓</span> Student resources and videos</li>
+        </ul>
+
+      </section>
+
+      <!-- ============================= RIGHT COLUMN: PAYMENT ============================= -->
+      <section class="payment-panel" aria-labelledby="payment-heading">
+        <div class="checkout-card">
+
+          <h2 id="payment-heading" class="checkout-card-heading" data-editable="payment-heading">Start Your Free Trial</h2>
+          <p class="checkout-card-subheading" data-editable="payment-subheading">
+            Enter your information below. Your card is required to start your trial, but you won't be charged today.
+          </p>
+
+          <!-- ================= GHL EMBED POINT =================
+               Replace the .ghl-placeholder block below with your
+               GoHighLevel Order Form / Payment Form embed.
+               See "INTEGRATION NOTES" at the top of this file.
+          ===================================================== -->
+          <div id="ghl-payment-form-slot">
+            <div class="ghl-placeholder">
+              <svg class="ghl-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <rect x="2" y="5" width="20" height="14" rx="2.5"/>
+                <path d="M2 9.5h20"/>
+                <path d="M6 14.5h4"/>
+              </svg>
+              <strong>GoHighLevel Payment Form</strong>
+              <span>Embed your GHL Order Form / Payment Form element here (name, email, and card fields).</span>
+            </div>
+          </div>
+
+          <p class="trust-row">
+            🔒 <span><strong>Secure checkout.</strong> You won't be charged today.</span>
+          </p>
+
+          <button type="submit" id="start-trial-btn" class="btn-primary" aria-describedby="cta-disclosure">
+            Start My 14-Day Free Trial
+          </button>
+
+          <p id="cta-disclosure" class="cta-disclosure" data-editable="cta-disclosure">
+            You won't be charged today. Your first payment of $119 will be charged after your 14-day trial. Cancel anytime before then.
+          </p>
+
+          <p class="fine-print" data-editable="fine-print">
+            By starting your trial, you agree to the membership terms. Your membership will automatically renew at $119/year after the 14-day trial unless canceled.
+          </p>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================= GROUP RATE (SECONDARY, LOW-FRICTION) ============================= -->
+    <section class="group-rate" aria-labelledby="group-rate-heading">
+      <p id="group-rate-heading" class="group-rate-title">Registering with a group?</p>
+      <p class="group-rate-copy" data-editable="group-rate-copy">
+        Groups of 10+ students from the same program may qualify for our $99/year group rate.
+      </p>
+      <a href="#" class="btn-secondary" data-editable="group-rate-cta">Apply for Group Rate</a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">Speech Therapy Plans</div>
+  <ul class="footer-links">
+    <li><a href="#" data-editable="footer-support">Contact &amp; Support</a></li>
+    <li><a href="#" data-editable="footer-terms">Terms</a></li>
+    <li><a href="#" data-editable="footer-privacy">Privacy</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Minimal JS: this page ships without a payment implementation by design.
+  // The native GoHighLevel Order/Payment form embedded in #ghl-payment-form-slot
+  // handles all payment collection and submission. If GHL's form does not
+  // include its own submit button, wire #start-trial-btn to trigger the
+  // embedded form's submit here (per GHL's embed documentation) instead of
+  // building custom submit logic.
+</script>
+
+</body>
+</html>
