@@ -100,11 +100,14 @@
     color: var(--teal-dark);
     text-decoration: none;
     letter-spacing: -0.01em;
+    overflow: hidden;
   }
 
   .logo-mark {
-    width: 34px;
     height: 34px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
     flex-shrink: 0;
   }
 
@@ -399,15 +402,7 @@
 
 <header class="site-header">
   <a class="logo" href="#" aria-label="Speech Therapy Plans home">
-    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="24" cy="24" r="24" fill="#EBF6F8"/>
-      <ellipse cx="24" cy="27" rx="13" ry="10" fill="#5CAEB9"/>
-      <circle cx="16" cy="17" r="5.5" fill="#5CAEB9"/>
-      <circle cx="32" cy="17" r="5.5" fill="#5CAEB9"/>
-      <circle cx="16" cy="17" r="2.4" fill="#167582"/>
-      <circle cx="32" cy="17" r="2.4" fill="#167582"/>
-      <path d="M18 29c1.6 1.6 4 2.4 6 2.4s4.4-.8 6-2.4" stroke="#167582" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-    </svg>
+    <img class="logo-mark" src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a7986c1888087201951c744.png" alt="">
     <span class="logo-text-primary">Speech Therapy<span class="logo-text-accent">Plans</span></span>
   </a>
 </header>
