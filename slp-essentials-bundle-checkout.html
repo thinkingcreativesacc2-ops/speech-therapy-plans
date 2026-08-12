@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get the SLP Essentials Bundle for $27 | Speech Therapy Plans</title>
+<meta name="description" content="Get the SLP Essentials Bundle — 9 done-for-you resource packs including flashcards, word lists, visuals, and homework sheets — for $27.">
+
+<!--
+==================================================================================
+  SPEECH THERAPY PLANS — CHECKOUT PAGE (SLP Essentials Bundle / $27 one-time)
+==================================================================================
+  INTEGRATION NOTES FOR GOHIGHLEVEL
+  ----------------------------------------------------------------------------
+  1. This file is a self-contained page (HTML + CSS). It can be dropped into
+     a GHL Funnel/Website step as a "Custom Code" / full-page HTML element,
+     or the <style> and body markup can be pasted into GHL's page builder as
+     a Custom HTML section.
+
+  2. GHL ORDER FORM EMBED
+     The real GHL order form (id "EgQbILCj3WYwAW1Iin49") is embedded as-is,
+     unmodified, inside #ghl-payment-form-slot. Its internal fields render
+     inside a cross-origin iframe, so they can't be restyled from this page —
+     only the surrounding card, heading, and copy are custom. If the visual
+     styling of the form fields themselves needs to change, that has to be
+     done inside the GHL form builder (Settings > Custom CSS on the form),
+     not here.
+
+  3. All copy below is placeholder/editable — marked with data-editable
+     attributes where useful — and can be updated directly in the HTML.
+==================================================================================
+-->
+
+<style>
+  :root {
+    --teal: #34909D;
+    --teal-bright: #5CAEB9;
+    --teal-dark: #167582;
+    --bg-light: #EBF6F8;
+    --bg-section: #E7F0F2;
+    --white: #FFFFFF;
+    --text-dark: #263238;
+    --text-muted: #5A6B70;
+    --pink: #E83E83;
+    --pink-dark: #C92D6D;
+    --gold: #E8A23E;
+    --gold-dark: #C97F1F;
+    --border-soft: #D9E9EC;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --shadow-card: 0 10px 30px rgba(38, 56, 60, 0.08);
+    --shadow-card-lg: 0 16px 40px rgba(22, 117, 130, 0.12);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img, svg { max-width: 100%; display: block; }
+
+  a { color: var(--teal-dark); }
+
+  /* ---------------------------------- HEADER ---------------------------------- */
+
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--teal-dark);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-mark { width: 34px; height: 34px; flex-shrink: 0; }
+  .logo-text-primary { color: var(--teal-dark); }
+  .logo-text-accent { color: var(--pink); }
+
+  /* ---------------------------------- LAYOUT ---------------------------------- */
+
+  .checkout-page { padding: 40px 20px 64px; }
+
+  .checkout-container { max-width: 1080px; margin: 0 auto; }
+
+  .checkout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 44px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .checkout-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------------------------------- LEFT COLUMN: OFFER ---------------------------------- */
+
+  .offer-panel {
+    position: sticky;
+    top: 28px;
+  }
+
+  @media (max-width: 900px) {
+    .offer-panel { position: static; }
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: var(--bg-section);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .checkout-headline {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .checkout-headline .accent { color: var(--teal-dark); }
+
+  .checkout-subcopy {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    margin: 0 0 24px;
+    max-width: 46ch;
+  }
+
+  /* Hero image */
+  .hero-image-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-soft);
+    margin-bottom: 24px;
+    background: var(--bg-section);
+    min-height: 220px;
+  }
+
+  .hero-image-wrap img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-savings-ribbon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--gold);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 999px;
+    box-shadow: 0 6px 14px rgba(201, 127, 31, 0.35);
+  }
+
+  /* Pricing card */
+  .pricing-card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .pricing-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .price-current {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--gold-dark);
+    letter-spacing: -0.02em;
+  }
+
+  .price-original {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .savings-pill {
+    display: inline-block;
+    background: var(--bg-section);
+    color: var(--teal-dark);
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-top: 10px;
+  }
+
+  .stars-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .stars-row .stars { color: var(--gold); letter-spacing: 1px; }
+
+  .pricing-divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 18px 0;
+  }
+
+  .trust-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .trust-inline span { white-space: nowrap; }
+
+  .benefits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.98rem;
+    color: var(--text-dark);
+  }
+
+  .benefits-list .check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  /* ---------------------------------- RIGHT COLUMN: PAYMENT ---------------------------------- */
+
+  .payment-panel { min-width: 0; }
+
+  .checkout-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card-lg);
+    padding: 32px;
+    border: 1px solid var(--border-soft);
+  }
+
+  @media (max-width: 480px) {
+    .checkout-card { padding: 24px 18px; }
+  }
+
+  .checkout-card-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 6px;
+    text-align: center;
+    color: var(--text-dark);
+  }
+
+  .checkout-card-subheading {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+    text-align: center;
+  }
+
+  /* GHL embed slot */
+  #ghl-payment-form-slot {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .ghl-embed-frame {
+    width: 100%;
+    min-height: 836px;
+    border: none;
+    display: block;
+  }
+
+  /* Trust row */
+  .trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    background: var(--bg-section);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    margin-top: 20px;
+  }
+
+  .trust-row strong { color: var(--text-dark); }
+
+  /* ---------------------------------- GUARANTEE STRIP ---------------------------------- */
+
+  .guarantee-strip {
+    max-width: 720px;
+    margin: 40px auto 0;
+    background: var(--bg-section);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .guarantee-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 6px;
+  }
+
+  .guarantee-copy {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 52ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------------------------------- FOOTER ---------------------------------- */
+
+  .site-footer {
+    background: var(--bg-section);
+    padding: 28px 20px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .site-footer .footer-brand {
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links a { color: var(--text-muted); text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#" aria-label="Speech Therapy Plans home">
+    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="24" cy="24" r="24" fill="#EBF6F8"/>
+      <ellipse cx="24" cy="27" rx="13" ry="10" fill="#5CAEB9"/>
+      <circle cx="16" cy="17" r="5.5" fill="#5CAEB9"/>
+      <circle cx="32" cy="17" r="5.5" fill="#5CAEB9"/>
+      <circle cx="16" cy="17" r="2.4" fill="#167582"/>
+      <circle cx="32" cy="17" r="2.4" fill="#167582"/>
+      <path d="M18 29c1.6 1.6 4 2.4 6 2.4s4.4-.8 6-2.4" stroke="#167582" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="logo-text-primary">Speech Therapy<span class="logo-text-accent">Plans</span></span>
+  </a>
+</header>
+
+<main class="checkout-page">
+  <div class="checkout-container">
+
+    <div class="checkout-grid">
+
+      <!-- ============================= LEFT COLUMN: OFFER ============================= -->
+      <section class="offer-panel" aria-labelledby="offer-heading">
+
+        <span class="badge-pill" data-editable="badge-label">Instant Digital Download</span>
+
+        <h1 id="offer-heading" class="checkout-headline">
+          Get the <span class="accent" data-editable="product-name">SLP Essentials Bundle</span> for $27
+        </h1>
+
+        <p class="checkout-subcopy" data-editable="subcopy">
+          9 done-for-you resource packs — flashcards, word lists, visuals, homework sheets &amp; more.
+        </p>
+
+        <div class="hero-image-wrap">
+          <span class="hero-savings-ribbon" data-editable="savings-amount">You Save $106</span>
+          <img src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a300bb7a7336264a5761e2c.png" alt="SLP Essentials Bundle preview — flashcards, homework sheets, and therapy visuals">
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-row">
+            <span class="price-current" data-editable="price-current">$27</span>
+            <span class="price-original" data-editable="price-original">$133</span>
+          </div>
+          <span class="savings-pill">One-time payment · no subscription</span>
+
+          <div class="stars-row">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span data-editable="social-proof">Trusted by thousands of SLPs</span>
+          </div>
+
+          <hr class="pricing-divider">
+
+          <ul class="benefits-list" aria-label="What's included in the SLP Essentials Bundle">
+            <li><span class="check" aria-hidden="true">✓</span> 9 ready-to-use SLP resource packs</li>
+            <li><span class="check" aria-hidden="true">✓</span> Flashcards, word lists &amp; visuals</li>
+            <li><span class="check" aria-hidden="true">✓</span> Printable homework sheets</li>
+            <li><span class="check" aria-hidden="true">✓</span> Instant download, use it today</li>
+          </ul>
+        </div>
+
+        <div class="trust-inline">
+          <span>🔒 Secure checkout</span>
+          <span>⬇ Instant download</span>
+          <span>✓ No subscription</span>
+        </div>
+
+      </section>
+
+      <!-- ============================= RIGHT COLUMN: PAYMENT ============================= -->
+      <section class="payment-panel" aria-labelledby="payment-heading">
+        <div class="checkout-card">
+
+          <h2 id="payment-heading" class="checkout-card-heading" data-editable="payment-heading">Complete Your Order</h2>
+          <p class="checkout-card-subheading" data-editable="payment-subheading">
+            One-time $27 · instant download
+          </p>
+
+          <!-- ================= GHL EMBED POINT =================
+               Native GoHighLevel order form. Left unmodified other
+               than removing the inline border-radius (handled by the
+               wrapping card now) so it inherits the page's styling.
+          ===================================================== -->
+          <div id="ghl-payment-form-slot">
+            <iframe
+              src="https://link.thinkingcreatives.com/widget/form/EgQbILCj3WYwAW1Iin49"
+              class="ghl-embed-frame"
+              id="inline-EgQbILCj3WYwAW1Iin49"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Checkout Form for $27"
+              data-height="836"
+              data-layout-iframe-id="inline-EgQbILCj3WYwAW1Iin49"
+              data-form-id="EgQbILCj3WYwAW1Iin49"
+              title="Checkout Form for $27"
+            ></iframe>
+          </div>
+
+          <p class="trust-row">
+            🔒 <span><strong>Secure checkout.</strong> Your info is protected and encrypted.</span>
+          </p>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============================= GUARANTEE STRIP ============================= -->
+    <section class="guarantee-strip" aria-labelledby="guarantee-heading">
+      <p id="guarantee-heading" class="guarantee-title">100% Money-Back Guarantee</p>
+      <p class="guarantee-copy" data-editable="guarantee-copy">
+        Not happy with the bundle? Email us within 30 days of purchase for a full refund, no questions asked.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">Speech Therapy Plans</div>
+  <ul class="footer-links">
+    <li><a href="#" data-editable="footer-support">Contact &amp; Support</a></li>
+    <li><a href="#" data-editable="footer-terms">Terms</a></li>
+    <li><a href="#" data-editable="footer-privacy">Privacy</a></li>
+  </ul>
+</footer>
+
+<script src="https://link.thinkingcreatives.com/js/form_embed.js"></script>
+
+</body>
+</html>
