@@ -16,20 +16,28 @@
      of the GHL page/funnel.
 
   3. LOGIN URL
-     Every "Go to My Account" / "Explore My Free Account" button below uses
-     the placeholder href="{{TEACHER_LOGIN_URL}}". Replace both instances
-     with the real teacher login/dashboard URL (or a GHL merge field) before
-     publishing. Search for "{{TEACHER_LOGIN_URL}}" to find both spots.
+     The "Log In to Speech Therapy Plans" button links to
+     https://www.speechtherapyplans.com/login. It is styled as a
+     secondary/subtle action (not the primary CTA) because the teacher's
+     account may not be approved yet — see note 6 below.
 
   4. VOUCHER CODE
      This page intentionally never displays or fabricates a voucher code.
      The code is delivered by email — the page only reinforces "check your
      inbox." Do not add a real or placeholder code here.
 
-  5. This page assumes the teacher has ALREADY registered. There is no
-     signup form on this page and no attempt to sell — its only job is to
-     confirm success, point them to their email, and hand them off to their
-     account.
+  5. This page assumes the teacher has ALREADY submitted the signup form,
+     but their faculty account is PENDING REVIEW, not yet active. There is
+     no signup form on this page and no attempt to sell — its only job is
+     to confirm the signup was received, explain that review is in
+     progress, and tell them to watch their email for account access and
+     their voucher.
+
+  6. Copy throughout this page is deliberately written to never imply the
+     account is already active/approved/ready. If this page is ever
+     edited, keep new copy consistent with "signup received, pending
+     review" — do not reintroduce language like "your account is ready"
+     or "explore your account now."
 ==================================================================================
 -->
 
@@ -268,6 +276,10 @@
     color: var(--tty-text-muted);
     max-width: 54ch;
     margin: 0 auto;
+  }
+
+  #stp-teacher-thank-you .tty-hero-sub + .tty-hero-sub {
+    margin-top: 14px;
   }
 
   /* Check-your-email card */
@@ -728,10 +740,14 @@
     <section class="tty-hero">
       <div class="tty-section-inner">
         <div class="tty-check-badge" aria-hidden="true">✓</div>
-        <h1>You're In! Welcome to Speech Therapy Plans.</h1>
+        <h1>Your Faculty Account Is Being Reviewed</h1>
         <p class="tty-hero-sub">
-          Your free faculty account is ready. We've also sent your unique student voucher code
-          to the email address you registered with.
+          Thanks for signing up for Speech Therapy Plans! We've received your request and are
+          currently reviewing your faculty account.
+        </p>
+        <p class="tty-hero-sub">
+          Keep an eye on your inbox — we'll email you with your account information and your
+          unique student voucher code once your account has been reviewed.
         </p>
 
         <div class="tty-email-card tty-reveal">
@@ -739,13 +755,13 @@
             <span class="tty-email-icon" aria-hidden="true">📩</span>
             <div>
               <span class="tty-eyebrow">Check Your Email</span>
-              <h2>Your Welcome Email Is On Its Way</h2>
-              <p>It includes your account information, getting-started steps, and your unique student voucher code to share with your students.</p>
+              <h2>Your Next Steps Will Arrive by Email</h2>
+              <p>Once your faculty account has been reviewed, we'll send you an email with your account information and your unique student voucher code.</p>
             </div>
           </div>
           <div class="tty-email-card-note">
             <span aria-hidden="true">💡</span>
-            <span>Don't see it yet? Check your spam, junk, or promotions folder.</span>
+            <span>Don't see it? Check your spam, junk, or promotions folder.</span>
           </div>
         </div>
       </div>
@@ -758,8 +774,9 @@
           <span class="tty-eyebrow">Your Student Voucher</span>
           <h2 class="tty-h2">Give Your Students a Special Rate</h2>
           <p class="tty-lede">
-            Your faculty account comes with a unique student voucher you can share with the
-            students you teach, supervise, or mentor — it's already on its way to your inbox.
+            Your unique student voucher will be sent to the email address you used when you
+            signed up. Once you receive it, you can share it with the students you teach,
+            supervise, or mentor.
           </p>
         </div>
 
@@ -775,7 +792,7 @@
               <div class="tty-price-row-amount"><span class="tty-old-price">$119</span><span class="tty-amount">$99</span><span class="tty-period">/ year</span></div>
             </div>
           </div>
-          <p class="tty-voucher-footnote">This is a benefit of your free faculty account — not a referral or commission program.</p>
+          <p class="tty-voucher-footnote">Your faculty account is free. Your voucher gives your students access to the special $99/year student rate — this is a benefit of your account, not a referral or commission program.</p>
         </div>
       </div>
     </section>
@@ -785,16 +802,17 @@
       <div class="tty-section-inner tty-reveal">
         <div class="tty-section-header">
           <span class="tty-eyebrow">What's Inside</span>
-          <h2 class="tty-h2">Your Email Has Everything You Need</h2>
+          <h2 class="tty-h2">What to Look For in Your Email</h2>
         </div>
 
         <div class="tty-checklist-card">
           <ul class="tty-checklist">
-            <li><span class="tty-mark" aria-hidden="true">✓</span> Your Speech Therapy Plans account information</li>
-            <li class="tty-checklist-highlight"><span class="tty-mark" aria-hidden="true">✓</span> Your unique student voucher code — it's inside</li>
+            <li><span class="tty-mark" aria-hidden="true">✓</span> Your faculty account information</li>
+            <li class="tty-checklist-highlight"><span class="tty-mark" aria-hidden="true">✓</span> Your unique student voucher code</li>
             <li><span class="tty-mark" aria-hidden="true">✓</span> Getting-started information</li>
-            <li><span class="tty-mark" aria-hidden="true">✓</span> Information you can share with your students</li>
+            <li><span class="tty-mark" aria-hidden="true">✓</span> Instructions for sharing your voucher with students</li>
           </ul>
+          <p class="tty-microcopy" style="margin:16px 0 0;">No action is needed right now — just keep an eye on your inbox.</p>
         </div>
       </div>
     </section>
@@ -810,23 +828,23 @@
         <div class="tty-steps">
           <div class="tty-step-card">
             <span class="tty-step-num">1</span>
-            <h3>Check Your Email</h3>
-            <p>Find your Speech Therapy Plans welcome email and save it somewhere easy to find.</p>
+            <h3>Wait for Your Email</h3>
+            <p>We've received your signup. Your faculty account is now being reviewed.</p>
           </div>
           <div class="tty-step-card">
             <span class="tty-step-num">2</span>
-            <h3>Save Your Voucher</h3>
-            <p>Your unique student voucher is included in the email.</p>
+            <h3>Check Your Inbox</h3>
+            <p>We'll email you with your account information and unique student voucher code.</p>
           </div>
           <div class="tty-step-card">
             <span class="tty-step-num">3</span>
-            <h3>Share It With Your Students</h3>
-            <p>Give your students the code so they can receive the special student rate.</p>
+            <h3>Save Your Voucher</h3>
+            <p>Keep your unique voucher code handy so you can share it with your students.</p>
           </div>
           <div class="tty-step-card">
             <span class="tty-step-num">4</span>
-            <h3>Explore Your Free Account</h3>
-            <p>Log in and explore the resources your students can use throughout their clinical journey.</p>
+            <h3>Share With Your Students</h3>
+            <p>Use the ready-to-send message below to tell your students about their special rate.</p>
           </div>
         </div>
       </div>
@@ -838,7 +856,7 @@
         <div class="tty-section-header">
           <span class="tty-eyebrow">Sharing With Students</span>
           <h2 class="tty-h2">Ready to Share With Your Students?</h2>
-          <p class="tty-lede">Copy this message and paste it into an email, LMS announcement, or group chat to give your students everything they need to get started.</p>
+          <p class="tty-lede">Once you receive your voucher by email, copy the message below and send it to your students.</p>
         </div>
 
         <div class="tty-message-card">
@@ -870,9 +888,10 @@
       <div class="tty-section-inner tty-reveal">
         <div class="tty-account-card">
           <span class="tty-eyebrow">Your Account</span>
-          <h2 class="tty-h2">Your Free Account Is Ready</h2>
-          <p class="tty-lede" style="margin-bottom:26px;">Explore Speech Therapy Plans and see the resources available to you and your students.</p>
-          <a href="{{TEACHER_LOGIN_URL}}" class="tty-btn tty-btn-primary">Go to My Account</a>
+          <h2 class="tty-h2">Your Faculty Account</h2>
+          <p class="tty-lede" style="margin-bottom:26px;">Your account is currently being reviewed. Once approved, you'll receive the information you need to log in and explore Speech Therapy Plans.</p>
+          <a href="https://www.speechtherapyplans.com/login" class="tty-btn tty-btn-secondary">Log In to Speech Therapy Plans</a>
+          <p class="tty-microcopy" style="margin-top:14px;">Login access will be available once your account has been approved.</p>
         </div>
       </div>
     </section>
@@ -881,8 +900,8 @@
     <section class="tty-reminder">
       <div class="tty-section-inner">
         <h2>Keep an Eye on Your Inbox</h2>
-        <p>We've sent your account information and unique student voucher code to the email address you used to register.</p>
-        <p>If you don't see it within a few minutes, check your spam, junk, or promotions folder.</p>
+        <p>We've received your faculty account request. Keep an eye on the email address you used to sign up — we'll send your account information and unique student voucher code there once your request has been reviewed.</p>
+        <p>If you don't see an email after a little while, check your spam, junk, or promotions folder.</p>
       </div>
     </section>
 
@@ -897,10 +916,10 @@
         <div class="tty-faq-list">
           <div class="tty-faq-item">
             <button class="tty-faq-question" aria-expanded="false">
-              Is my teacher account really free?
+              Is my faculty account really free?
               <span class="tty-faq-icon" aria-hidden="true">+</span>
             </button>
-            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Yes. Your teacher/faculty account is free and does not require payment information.</p></div></div>
+            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Yes. Faculty accounts are free and do not require a credit card.</p></div></div>
           </div>
 
           <div class="tty-faq-item">
@@ -908,15 +927,23 @@
               What does my student voucher do?
               <span class="tty-faq-icon" aria-hidden="true">+</span>
             </button>
-            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Students who use your voucher receive the 14-day free trial and the special $99/year student rate instead of $119/year.</p></div></div>
+            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Your unique voucher gives your students access to a special $99/year rate instead of the regular $119/year price, along with a 14-day free trial.</p></div></div>
           </div>
 
           <div class="tty-faq-item">
             <button class="tty-faq-question" aria-expanded="false">
-              Where is my voucher?
+              Where will I receive my voucher?
               <span class="tty-faq-icon" aria-hidden="true">+</span>
             </button>
-            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Your unique voucher code has been sent to the email address you used when registering.</p></div></div>
+            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Your unique voucher code will be sent to the email address you used when signing up.</p></div></div>
+          </div>
+
+          <div class="tty-faq-item">
+            <button class="tty-faq-question" aria-expanded="false">
+              When can I access my faculty account?
+              <span class="tty-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Your faculty account is currently being reviewed. Once approved, you'll receive the information you need to access your account.</p></div></div>
           </div>
 
           <div class="tty-faq-item">
@@ -924,7 +951,7 @@
               What should I do if I don't receive my email?
               <span class="tty-faq-icon" aria-hidden="true">+</span>
             </button>
-            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Check your spam, junk, or promotions folder first. If you still can't find it, use the appropriate support contact if one is provided.</p></div></div>
+            <div class="tty-faq-answer-wrap"><div class="tty-faq-answer-inner"><p class="tty-faq-answer">Check your spam, junk, or promotions folder first. If you still can't find it, contact support.</p></div></div>
           </div>
         </div>
       </div>
@@ -933,10 +960,10 @@
     <!-- ============================= FINAL CTA ============================= -->
     <section class="tty-section tty-final-cta">
       <div class="tty-section-inner">
-        <span class="tty-eyebrow tty-eyebrow--on-dark">All Set</span>
-        <h2 class="tty-h2 tty-h2--on-dark">You're Ready to Get Started.</h2>
-        <p class="tty-lede tty-lede--on-dark">Check your email for your voucher, share it with your students, and explore your free Speech Therapy Plans account.</p>
-        <a href="{{TEACHER_LOGIN_URL}}" class="tty-btn tty-btn-ghost-on-dark">Explore My Free Account</a>
+        <span class="tty-eyebrow tty-eyebrow--on-dark">Signup Received</span>
+        <h2 class="tty-h2 tty-h2--on-dark">You're All Set for Now.</h2>
+        <p class="tty-lede tty-lede--on-dark">We've received your signup. Keep an eye on your inbox for your faculty account information and unique student voucher code.</p>
+        <p class="tty-lede tty-lede--on-dark">Once your account is approved, you'll be ready to explore Speech Therapy Plans and share the student benefit with your students.</p>
       </div>
     </section>
 
