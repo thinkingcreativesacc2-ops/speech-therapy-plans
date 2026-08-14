@@ -25,8 +25,9 @@
      "thank you" state on this page for it. If you need to change the
      form, edit it in GHL and swap the src/data-form-id here to match.
 
-  3. All primary CTAs on this page scroll to the same #signup section by
-     design — there is only one conversion goal on this page.
+  3. All primary CTAs on this page scroll directly to the signup form
+     itself (id="signup-form", the .signup-card holding the GHL embed)
+     by design — there is only one conversion goal on this page.
 ==================================================================================
 -->
 
@@ -1220,7 +1221,7 @@
     </nav>
 
     <div class="header-cta-group">
-      <a href="#signup" class="btn btn-primary btn-small js-scroll-cta">
+      <a href="#signup-form" class="btn btn-primary btn-small js-scroll-cta">
         <span class="btn-full-label">Create Free Faculty Account</span>
         <span class="btn-short-label" aria-hidden="true">Sign Up Free</span>
       </a>
@@ -1254,7 +1255,7 @@
         <div class="free-badge">🎓 Free for Teachers &amp; Faculty</div>
 
         <div class="hero-cta-row">
-          <a href="#signup" class="btn btn-primary btn-primary-lg js-scroll-cta">Create Your Free Faculty Account</a>
+          <a href="#signup-form" class="btn btn-primary btn-primary-lg js-scroll-cta">Create Your Free Faculty Account</a>
           <p class="microcopy">🔒 No credit card required — takes about a minute.</p>
         </div>
 
@@ -1412,7 +1413,7 @@
       </div>
 
       <div class="steps-cta">
-        <a href="#signup" class="btn btn-ghost-on-dark js-scroll-cta">Create My Free Faculty Account</a>
+        <a href="#signup-form" class="btn btn-ghost-on-dark js-scroll-cta">Create My Free Faculty Account</a>
       </div>
     </div>
   </section>
@@ -1617,7 +1618,7 @@
       </p>
     </div>
 
-    <div class="signup-card">
+    <div class="signup-card" id="signup-form">
       <h3>Create Your Free Faculty Account</h3>
       <p class="signup-sub">Takes about a minute. No credit card required.</p>
       <p class="signup-trust-row">🔒 <span>Free faculty account. No credit card required, ever.</span></p>
@@ -1667,7 +1668,7 @@
 
 <!-- ============================= MOBILE STICKY CTA ============================= -->
 <div class="mobile-sticky-cta">
-  <a href="#signup" class="btn btn-primary js-scroll-cta">Create Free Faculty Account</a>
+  <a href="#signup-form" class="btn btn-primary js-scroll-cta">Create Free Faculty Account</a>
 </div>
 
 <script>
