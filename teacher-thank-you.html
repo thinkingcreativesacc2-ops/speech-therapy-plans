@@ -716,13 +716,31 @@
 
   #stp-teacher-thank-you .tty-footer {
     background: var(--tty-bg-section);
-    padding: 32px 24px;
+    padding: 40px 24px 28px;
     text-align: center;
     font-size: 0.84rem;
     color: var(--tty-text-muted);
   }
 
-  #stp-teacher-thank-you .tty-footer strong { color: var(--tty-text-dark); }
+  #stp-teacher-thank-you .tty-footer-brand {
+    font-weight: 800;
+    color: var(--tty-text-dark);
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  #stp-teacher-thank-you .tty-footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+
+  #stp-teacher-thank-you .tty-footer-links a { text-decoration: none; color: var(--tty-text-muted); }
+  #stp-teacher-thank-you .tty-footer-links a:hover { text-decoration: underline; }
 </style>
 
 <div id="stp-teacher-thank-you">
@@ -971,7 +989,14 @@
 
   <!-- ============================= FOOTER ============================= -->
   <footer class="tty-footer">
-    <p><strong>Speech Therapy Plans</strong> — your account is free, no credit card required.</p>
+    <div class="tty-footer-brand">Speech Therapy Plans</div>
+    <ul class="tty-footer-links">
+      <li><a href="#">Student Membership</a></li>
+      <li><a href="mailto:jen@learn.speechtherapyplans.com?subject=Speech%20Therapy%20Plans%20Teacher%20Support&amp;body=Hi%20Jen%2C%0D%0A%0D%0AI'm%20reaching%20out%20because%20I%20have%20a%20question%20about%20my%20Speech%20Therapy%20Plans%20teacher%20account.%0D%0A%0D%0A%5BPlease%20type%20your%20question%20here.%5D%0D%0A%0D%0AThank%20you!">Contact &amp; Support</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <p>&copy; <span id="tty-footer-year"></span> Speech Therapy Plans. Faculty accounts are free — no credit card required.</p>
   </footer>
 
 </div>
@@ -982,6 +1007,10 @@
 
     var wrapper = document.getElementById("stp-teacher-thank-you");
     if (!wrapper) return;
+
+    /* ---------- Footer year ---------- */
+    var footerYear = wrapper.querySelector("#tty-footer-year");
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
 
     /* ---------- FAQ accordion ---------- */
     wrapper.querySelectorAll(".tty-faq-item").forEach(function (item) {
