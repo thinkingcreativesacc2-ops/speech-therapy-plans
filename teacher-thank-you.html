@@ -537,7 +537,6 @@
 
   #stp-teacher-thank-you .tty-message-box {
     width: 100%;
-    resize: none;
     font-family: inherit;
     font-size: 0.96rem;
     line-height: 1.6;
@@ -547,12 +546,32 @@
     border-radius: var(--tty-radius-md);
     padding: 18px;
     margin-top: 4px;
+    word-break: break-word;
   }
 
-  #stp-teacher-thank-you .tty-message-box:focus {
-    outline: none;
-    border-color: var(--tty-teal);
+  #stp-teacher-thank-you .tty-message-link {
+    display: inline-block;
+    word-break: break-all;
   }
+
+  #stp-teacher-thank-you .tty-message-link-primary {
+    color: var(--tty-teal-dark);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  #stp-teacher-thank-you .tty-message-link-primary:hover { color: var(--tty-teal); }
+
+  #stp-teacher-thank-you .tty-message-link-secondary {
+    color: var(--tty-text-muted);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  #stp-teacher-thank-you .tty-message-link-secondary:hover { color: var(--tty-text-dark); }
 
   #stp-teacher-thank-you .tty-message-actions {
     display: flex;
@@ -818,20 +837,29 @@
       <div class="tty-section-inner tty-reveal">
         <div class="tty-section-header">
           <span class="tty-eyebrow">Sharing With Students</span>
-          <h2 class="tty-h2">Not Sure What to Send Your Students?</h2>
-          <p class="tty-lede">Once you have your code from your welcome email, here's a simple message you can copy and send.</p>
+          <h2 class="tty-h2">Ready to Share With Your Students?</h2>
+          <p class="tty-lede">Copy this message and paste it into an email, LMS announcement, or group chat to give your students everything they need to get started.</p>
         </div>
 
         <div class="tty-message-card">
-          <label for="tty-message-textarea" class="tty-visually-hidden">Sample message to send your students</label>
-          <textarea id="tty-message-textarea" class="tty-message-box" rows="8" readonly>Hi! I wanted to share a resource that may help you feel more prepared for your clinical placements.
-
-Speech Therapy Plans gives you access to practical therapy plans, materials, and tools to help you prepare for sessions.
-
-You can start with a 14-day free trial and use my teacher voucher to receive the special $99/year student rate: [INSERT YOUR VOUCHER CODE FROM YOUR EMAIL]</textarea>
+          <div class="tty-message-box" id="tty-message-display" aria-label="Sample message to send your students">
+            Hi everyone,<br><br>
+            I wanted to share a resource that may make your clinical placements a little less stressful: Speech Therapy Plans.<br><br>
+            It’s an all-in-one platform with ready-made therapy plans, 2,000+ materials, data-tracking tools, assessments, and goal-writing resources — all designed to help you feel more prepared when you walk into your sessions.<br><br>
+            I’ve partnered with Speech Therapy Plans to give you a special student rate.<br><br>
+            Use my voucher code: <strong>[YOUR VOUCHER CODE]</strong><br><br>
+            You’ll get 14 days free, then $99/year (normally $119/year).<br><br>
+            Sign up here:<br>
+            <a href="https://studentprogram.speechtherapyplans.com" target="_blank" rel="noopener noreferrer" class="tty-message-link tty-message-link-primary">https://studentprogram.speechtherapyplans.com</a><br><br>
+            Already have an account? Log in here:<br>
+            <a href="https://www.speechtherapyplans.com/login" target="_blank" rel="noopener noreferrer" class="tty-message-link tty-message-link-secondary">https://www.speechtherapyplans.com/login</a><br><br>
+            I highly recommend checking it out before your next placement!<br><br>
+            Best,<br>
+            [Your Name]
+          </div>
           <div class="tty-message-actions">
-            <button type="button" class="tty-btn tty-btn-secondary" id="tty-copy-btn" data-default-label="📋 Copy Message" data-copied-label="✓ Copied!">📋 Copy Message</button>
-            <p class="tty-microcopy" style="margin:0;">Remember to swap in your code from your welcome email before sending.</p>
+            <button type="button" class="tty-btn tty-btn-secondary" id="tty-copy-btn" data-default-label="📋 Copy Message" data-copied-label="✓ Message Copied!">📋 Copy Message</button>
+            <p class="tty-microcopy" style="margin:0;">Remember to replace [YOUR VOUCHER CODE] with the unique student voucher code from your welcome email before sending.</p>
           </div>
         </div>
       </div>
@@ -940,13 +968,34 @@ You can start with a 14-day free trial and use my teacher voucher to receive the
 
     /* ---------- Copy sample message ---------- */
     var copyBtn = wrapper.querySelector("#tty-copy-btn");
-    var textarea = wrapper.querySelector("#tty-message-textarea");
 
-    if (copyBtn && textarea) {
+    var plainMessage = [
+      "Hi everyone,",
+      "",
+      "I wanted to share a resource that may make your clinical placements a little less stressful: Speech Therapy Plans.",
+      "",
+      "It’s an all-in-one platform with ready-made therapy plans, 2,000+ materials, data-tracking tools, assessments, and goal-writing resources — all designed to help you feel more prepared when you walk into your sessions.",
+      "",
+      "I’ve partnered with Speech Therapy Plans to give you a special student rate.",
+      "",
+      "Use my voucher code: [YOUR VOUCHER CODE]",
+      "",
+      "You’ll get 14 days free, then $99/year (normally $119/year).",
+      "",
+      "Sign up here:",
+      "https://studentprogram.speechtherapyplans.com",
+      "",
+      "Already have an account? Log in here:",
+      "https://www.speechtherapyplans.com/login",
+      "",
+      "I highly recommend checking it out before your next placement!",
+      "",
+      "Best,",
+      "[Your Name]"
+    ].join("\n");
+
+    if (copyBtn) {
       copyBtn.addEventListener("click", function () {
-        textarea.focus();
-        textarea.select();
-
         function showCopied() {
           copyBtn.textContent = copyBtn.getAttribute("data-copied-label");
           copyBtn.disabled = true;
@@ -956,12 +1005,24 @@ You can start with a 14-day free trial and use my teacher voucher to receive the
           }, 2000);
         }
 
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(textarea.value).then(showCopied, function () {
-            try { document.execCommand("copy"); showCopied(); } catch (e) {}
-          });
-        } else {
+        function fallbackCopy() {
+          var temp = document.createElement("textarea");
+          temp.value = plainMessage;
+          temp.setAttribute("readonly", "");
+          temp.style.position = "fixed";
+          temp.style.top = "-1000px";
+          temp.style.left = "-1000px";
+          document.body.appendChild(temp);
+          temp.select();
+          temp.setSelectionRange(0, temp.value.length);
           try { document.execCommand("copy"); showCopied(); } catch (e) {}
+          document.body.removeChild(temp);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(plainMessage).then(showCopied, fallbackCopy);
+        } else {
+          fallbackCopy();
         }
       });
     }
