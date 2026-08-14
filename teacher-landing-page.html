@@ -25,10 +25,11 @@
      "thank you" state on this page for it. If you need to change the
      form, edit it in GHL and swap the src/data-form-id here to match.
 
-  3. All primary CTAs on this page scroll to the #signup section, landing
-     on the "Help Your Students Start Their Next Placement With More
-     Confidence." headline at the top of the viewport, with the signup
-     form just below it — by design there is only one conversion goal on
+  3. All primary CTAs on this page scroll to the #get-started section
+     (the whole green closing section, not the form inside it), so its
+     top edge — the "GET STARTED" eyebrow — lands right at the bottom
+     edge of the sticky header, with no gap and no offset beyond the
+     header's own height. By design there is only one conversion goal on
      this page.
 ==================================================================================
 -->
@@ -66,7 +67,6 @@
     color: var(--text-dark);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     padding-bottom: 0;
   }
 
@@ -1223,7 +1223,7 @@
     </nav>
 
     <div class="header-cta-group">
-      <a href="#signup" class="btn btn-primary btn-small js-scroll-cta">
+      <a href="#get-started" class="btn btn-primary btn-small js-scroll-cta">
         <span class="btn-full-label">Create Free Faculty Account</span>
         <span class="btn-short-label" aria-hidden="true">Sign Up Free</span>
       </a>
@@ -1257,7 +1257,7 @@
         <div class="free-badge">🎓 Free for Teachers &amp; Faculty</div>
 
         <div class="hero-cta-row">
-          <a href="#signup" class="btn btn-primary btn-primary-lg js-scroll-cta">Create Your Free Faculty Account</a>
+          <a href="#get-started" class="btn btn-primary btn-primary-lg js-scroll-cta">Create Your Free Faculty Account</a>
           <p class="microcopy">🔒 No credit card required — takes about a minute.</p>
         </div>
 
@@ -1415,7 +1415,7 @@
       </div>
 
       <div class="steps-cta">
-        <a href="#signup" class="btn btn-ghost-on-dark js-scroll-cta">Create My Free Faculty Account</a>
+        <a href="#get-started" class="btn btn-ghost-on-dark js-scroll-cta">Create My Free Faculty Account</a>
       </div>
     </div>
   </section>
@@ -1610,7 +1610,7 @@
   </section>
 
   <!-- ============================= FINAL CTA + SIGNUP ============================= -->
-  <section class="final-cta-section" id="signup">
+  <section class="final-cta-section" id="get-started">
     <div class="final-cta-header">
       <span class="eyebrow eyebrow--on-dark">Get Started</span>
       <h2 class="h2 h2--on-dark">Help Your Students Start Their Next Placement With More Confidence.</h2>
@@ -1670,7 +1670,7 @@
 
 <!-- ============================= MOBILE STICKY CTA ============================= -->
 <div class="mobile-sticky-cta">
-  <a href="#signup" class="btn btn-primary js-scroll-cta">Create Free Faculty Account</a>
+  <a href="#get-started" class="btn btn-primary js-scroll-cta">Create Free Faculty Account</a>
 </div>
 
 <script>
@@ -1709,7 +1709,7 @@
         e.preventDefault();
         closeMobileNav();
         var headerH = headerEl ? headerEl.offsetHeight : 0;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
         window.scrollTo({ top: top, behavior: "smooth" });
       });
     });
