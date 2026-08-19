@@ -17,27 +17,19 @@
      full-page HTML element, or the <style> and body markup can be pasted
      into GHL's page builder as a Custom HTML section.
 
-  2. GHL PAYMENT / ORDER FORM PLACEMENT
-     Find the element with id="ghl-payment-form-slot" (search for
-     "GHL EMBED POINT" below). Delete the placeholder <div class="ghl-placeholder">
-     markup inside it and paste your GHL Order Form / Payment Form embed
-     (element or embed snippet) in its place. The surrounding
-     `.checkout-card` provides the white card, padding, and rounded corners,
-     so the native GHL form will already sit correctly inside the design —
-     it does not need its own card/background styling.
+  2. GHL PAYMENT / ORDER FORM
+     The live "Checkout Form for STP Students w/ Discount" GHL embed
+     (id="ghl-payment-form-slot", search for "GHL EMBED POINT" below) is
+     already wired in — iframe + the form_embed.js resize script. It
+     supplies its own fields, payment/submit button, validation, and
+     post-submit behavior as configured in GHL, so there is no separate
+     custom submit button on this page for it. The surrounding
+     `.checkout-card` provides the white card, padding, and rounded
+     corners, so the form sits correctly inside the design without its
+     own card/background styling. If you need to change the form, edit it
+     in GHL and swap the src/data-form-id here to match.
 
-  3. PRIMARY CTA BUTTON
-     The big pink "Start My 14-Day Free Trial" button (id="start-trial-btn")
-     is provided for visual/brand consistency. If your GHL Order Form
-     includes its own built-in submit button, you have two options:
-        a) Hide GHL's native submit button and use GHL's "on form submit"
-           JS trigger (or a form action) tied to this button, OR
-        b) Delete this custom button and re-style/re-label GHL's native
-           submit button (color: var(--pink), label: "Start My 14-Day Free
-           Trial") directly in the GHL builder.
-     Do not ship both as separate, independently-functioning submit actions.
-
-  4. All copy below is placeholder/editable — marked with data-editable
+  3. All copy below is placeholder/editable — marked with data-editable
      attributes where useful — and can be updated directly in the HTML.
 ==================================================================================
 -->
@@ -55,6 +47,8 @@
     --pink: #E83E83;
     --pink-dark: #C92D6D;
     --border-soft: #D9E9EC;
+    --coupon-bg: #EAF7F9;
+    --coupon-border: #C7E8EC;
     --radius-lg: 20px;
     --radius-md: 14px;
     --radius-sm: 10px;
@@ -102,22 +96,17 @@
   .logo {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 800;
-    font-size: 1.25rem;
-    color: var(--teal-dark);
     text-decoration: none;
-    letter-spacing: -0.01em;
+    overflow: hidden;
   }
 
   .logo-mark {
-    width: 34px;
-    height: 34px;
+    height: 42px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
     flex-shrink: 0;
   }
-
-  .logo-text-primary { color: var(--teal-dark); }
-  .logo-text-accent { color: var(--pink); }
 
   /* ---------------------------------- LAYOUT ---------------------------------- */
 
@@ -294,6 +283,41 @@
     margin-top: 1px;
   }
 
+  /* Coupon reminder card */
+  .coupon-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--coupon-bg);
+    border: 1px solid var(--coupon-border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    margin-top: 20px;
+  }
+
+  .coupon-note-icon {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .coupon-note-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin: 0 0 4px;
+  }
+
+  .coupon-note-body {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .coupon-note-body strong { color: var(--text-dark); }
+
   /* ---------------------------------- RIGHT COLUMN: PAYMENT ---------------------------------- */
 
   .payment-panel { min-width: 0; }
@@ -325,38 +349,9 @@
 
   /* GHL embed slot */
   #ghl-payment-form-slot {
+    width: 100%;
+    min-height: 879px;
     margin-bottom: 20px;
-  }
-
-  .ghl-placeholder {
-    border: 2px dashed var(--border-soft);
-    border-radius: var(--radius-md);
-    background: var(--bg-light);
-    padding: 40px 20px;
-    min-height: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 10px;
-    color: var(--text-muted);
-  }
-
-  .ghl-placeholder .ghl-placeholder-icon {
-    width: 36px;
-    height: 36px;
-    color: var(--teal);
-  }
-
-  .ghl-placeholder strong {
-    color: var(--teal-dark);
-    font-size: 1rem;
-  }
-
-  .ghl-placeholder span {
-    font-size: 0.85rem;
-    max-width: 32ch;
   }
 
   /* Trust row */
@@ -376,30 +371,6 @@
 
   .trust-row strong { color: var(--text-dark); }
 
-  /* Primary CTA */
-  .btn-primary {
-    display: block;
-    width: 100%;
-    background: var(--pink-dark);
-    color: var(--white);
-    font-size: 1.08rem;
-    font-weight: 800;
-    text-align: center;
-    padding: 17px 20px;
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: background-color 0.15s ease, transform 0.05s ease;
-    min-height: 52px;
-  }
-
-  .btn-primary:hover { background: var(--pink); }
-  .btn-primary:active { transform: translateY(1px); }
-  .btn-primary:focus-visible {
-    outline: 3px solid var(--teal-dark);
-    outline-offset: 2px;
-  }
-
   .cta-disclosure {
     font-size: 0.85rem;
     color: var(--text-muted);
@@ -417,53 +388,6 @@
   }
 
   .fine-print a { color: var(--text-muted); text-decoration: underline; }
-
-  /* ---------------------------------- GROUP RATE (SECONDARY) ---------------------------------- */
-
-  .group-rate {
-    max-width: 720px;
-    margin: 40px auto 0;
-    background: var(--bg-section);
-    border: 1px solid var(--border-soft);
-    border-radius: var(--radius-md);
-    padding: 20px 24px;
-    text-align: center;
-  }
-
-  .group-rate-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin: 0 0 6px;
-  }
-
-  .group-rate-copy {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin: 0 0 14px;
-    max-width: 52ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .btn-secondary {
-    display: inline-block;
-    background: transparent;
-    color: var(--teal-dark);
-    font-weight: 700;
-    font-size: 0.92rem;
-    padding: 11px 22px;
-    border: 1.5px solid var(--teal);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    text-decoration: none;
-    min-height: 44px;
-    line-height: 1.2;
-  }
-
-  .btn-secondary:hover {
-    background: rgba(52, 144, 157, 0.08);
-  }
 
   /* ---------------------------------- FOOTER ---------------------------------- */
 
@@ -507,16 +431,7 @@
 
 <header class="site-header">
   <a class="logo" href="#" aria-label="Speech Therapy Plans home">
-    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="24" cy="24" r="24" fill="#EBF6F8"/>
-      <ellipse cx="24" cy="27" rx="13" ry="10" fill="#5CAEB9"/>
-      <circle cx="16" cy="17" r="5.5" fill="#5CAEB9"/>
-      <circle cx="32" cy="17" r="5.5" fill="#5CAEB9"/>
-      <circle cx="16" cy="17" r="2.4" fill="#167582"/>
-      <circle cx="32" cy="17" r="2.4" fill="#167582"/>
-      <path d="M18 29c1.6 1.6 4 2.4 6 2.4s4.4-.8 6-2.4" stroke="#167582" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-    </svg>
-    <span class="logo-text-primary">Speech Therapy<span class="logo-text-accent">Plans</span></span>
+    <img class="logo-mark" src="https://assets.cdn.filesafe.space/KXka29kfWTsEqPDNMXSy/media/6a7986c1888087201951c744.png" alt="Speech Therapy Plans">
   </a>
 </header>
 
@@ -570,6 +485,16 @@
           <li><span class="check" aria-hidden="true">✓</span> Student resources and videos</li>
         </ul>
 
+        <div class="coupon-note" role="note" aria-label="Coupon code reminder">
+          <span class="coupon-note-icon" aria-hidden="true">🎟️</span>
+          <div>
+            <p class="coupon-note-heading">Have a coupon code?</p>
+            <p class="coupon-note-body" data-editable="coupon-note-body">
+              If your instructor, school, or program gave you a discount code, you can apply it at checkout to receive your discount. Have a code? Enter it in the <strong>Coupon Code</strong> field on the checkout form, then click <strong>Apply</strong>.
+            </p>
+          </div>
+        </div>
+
       </section>
 
       <!-- ============================= RIGHT COLUMN: PAYMENT ============================= -->
@@ -582,29 +507,36 @@
           </p>
 
           <!-- ================= GHL EMBED POINT =================
-               Replace the .ghl-placeholder block below with your
-               GoHighLevel Order Form / Payment Form embed.
-               See "INTEGRATION NOTES" at the top of this file.
+               Live "Checkout Form for STP Students w/ Discount" GHL embed.
+               It supplies its own fields, payment/submit button, and
+               post-submit behavior as configured in GHL — there is no
+               separate custom submit button on this page for it. See
+               "INTEGRATION NOTES" at the top of this file if this form is
+               ever swapped out.
           ===================================================== -->
           <div id="ghl-payment-form-slot">
-            <div class="ghl-placeholder">
-              <svg class="ghl-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                <rect x="2" y="5" width="20" height="14" rx="2.5"/>
-                <path d="M2 9.5h20"/>
-                <path d="M6 14.5h4"/>
-              </svg>
-              <strong>GoHighLevel Payment Form</strong>
-              <span>Embed your GHL Order Form / Payment Form element here (name, email, and card fields).</span>
-            </div>
+            <iframe
+                src="https://link.thinkingcreatives.com/widget/form/JWkEkezJSeEq4kiyBpQG"
+                style="width:100%;height:100%;border:none;border-radius:8px"
+                id="inline-JWkEkezJSeEq4kiyBpQG"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Checkout Form for STP Students w/ Discount"
+                data-height="879"
+                data-layout-iframe-id="inline-JWkEkezJSeEq4kiyBpQG"
+                data-form-id="JWkEkezJSeEq4kiyBpQG"
+                title="Checkout Form for STP Students w/ Discount">
+            </iframe>
           </div>
 
           <p class="trust-row">
             🔒 <span><strong>Secure checkout.</strong> You won't be charged today.</span>
           </p>
-
-          <button type="submit" id="start-trial-btn" class="btn-primary" aria-describedby="cta-disclosure">
-            Start My 14-Day Free Trial
-          </button>
 
           <p id="cta-disclosure" class="cta-disclosure" data-editable="cta-disclosure">
             You won't be charged today. Your first payment of $119 will be charged after your 14-day trial. Cancel anytime before then.
@@ -619,17 +551,9 @@
 
     </div>
 
-    <!-- ============================= GROUP RATE (SECONDARY, LOW-FRICTION) ============================= -->
-    <section class="group-rate" aria-labelledby="group-rate-heading">
-      <p id="group-rate-heading" class="group-rate-title">Registering with a group?</p>
-      <p class="group-rate-copy" data-editable="group-rate-copy">
-        Groups of 10+ students from the same program may qualify for our $99/year group rate.
-      </p>
-      <a href="#" class="btn-secondary" data-editable="group-rate-cta">Apply for Group Rate</a>
-    </section>
-
   </div>
 </main>
+<script src="https://link.thinkingcreatives.com/js/form_embed.js"></script>
 
 <footer class="site-footer">
   <div class="footer-brand">Speech Therapy Plans</div>
@@ -639,15 +563,6 @@
     <li><a href="#" data-editable="footer-privacy">Privacy</a></li>
   </ul>
 </footer>
-
-<script>
-  // Minimal JS: this page ships without a payment implementation by design.
-  // The native GoHighLevel Order/Payment form embedded in #ghl-payment-form-slot
-  // handles all payment collection and submission. If GHL's form does not
-  // include its own submit button, wire #start-trial-btn to trigger the
-  // embedded form's submit here (per GHL's embed documentation) instead of
-  // building custom submit logic.
-</script>
 
 </body>
 </html>
