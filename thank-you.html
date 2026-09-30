@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STP 14-Day Trial Thank You</title>
+<meta name="description" content="Thank you page for Speech Therapy Plans — your email is on the way; start your 14-day free trial." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /* Layout: announcement → nav → thank-you hero + video → trial strip → features → trial offer list + CTA card → reviews → final CTA → footer. Every trial CTA links to the register page. */
+  :root{
+    color-scheme:light;
+    --teal:#1BA6B7;
+    --teal-deep:#14828F;
+    --teal-dark:#0D5A63;
+    --coral:#FC0C6C;
+    --coral-deep:#D6005A;
+    --yellow:#FFC94D;
+    --mint:#EAF8F7;
+    --mint-2:#F4FBFA;
+    --cream:#FFF7EE;
+    --ink:#294143;
+    --ink-soft:#4C6567;
+    --white:#ffffff;
+    --shadow:0 12px 30px rgba(20,130,143,.12);
+    --shadow-sm:0 6px 16px rgba(20,130,143,.10);
+    --radius:18px;
+    --maxw:1180px;
+    --font-body:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --font-head:'Poppins','Nunito',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--white);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--font-head);color:var(--teal-dark);line-height:1.15;margin:0 0 .5em;text-wrap:balance;}
+  h2{font-size:clamp(1.8rem,3.4vw,2.7rem);}
+  h3{font-size:clamp(1.3rem,2.2vw,1.7rem);}
+  p{margin:0 0 1rem;}
+  a{color:var(--teal-deep);text-decoration:none;}
+  img{max-width:100%;height:auto;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:24px;}
+  .section{padding-block:70px;}
+  .center{text-align:center;}
+  .eyebrow{font-family:var(--font-head);font-weight:700;color:var(--coral-deep);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;margin-bottom:10px;}
+
+  /* buttons */
+  .btn{display:inline-block;font-family:var(--font-head);font-weight:700;padding:16px 34px;border-radius:999px;font-size:1.05rem;cursor:pointer;border:none;transition:transform .15s ease,box-shadow .15s ease;text-align:center;}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(252,12,108,.35);}
+  .btn-coral:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(252,12,108,.45);}
+  .btn-teal{background:var(--teal);color:#fff;box-shadow:0 8px 20px rgba(27,166,183,.32);}
+  .btn-teal:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(27,166,183,.42);}
+  .btn-ghost{background:#fff;color:var(--teal-deep);border:2px solid var(--teal);}
+  .btn-ghost:hover{background:var(--mint);}
+  .btn-lg{padding:20px 42px;font-size:1.15rem;}
+  .btn:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+
+  /* announcement bar */
+  .announce{background:var(--coral);color:#fff;text-align:center;font-family:var(--font-head);font-weight:600;font-size:.95rem;padding:10px 16px;}
+  .announce a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:700;}
+  .announce .tag{display:inline-block;background:#fff;color:var(--coral-deep);border-radius:999px;padding:2px 10px;font-size:.78rem;margin-right:8px;letter-spacing:.04em;}
+
+  /* header */
+  header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #e8f2f1;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;gap:20px;position:relative;}
+  .logo{display:flex;align-items:center;gap:10px;min-width:0;}
+  .logo img{height:52px;width:auto;}
+  .logo .wordmark{font-family:var(--font-head);font-weight:800;font-size:1.15rem;color:var(--teal);white-space:nowrap;}
+  .nav-links{display:flex;gap:28px;align-items:center;font-family:var(--font-head);font-weight:600;font-size:.98rem;}
+  .nav-links a{color:var(--ink);}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-cta{display:flex;gap:12px;align-items:center;}
+  .nav-cta .btn{padding:11px 24px;font-size:.95rem;}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.7rem;color:var(--teal-deep);cursor:pointer;}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:#fff;padding-block:60px 72px;}
+  .hero::before{content:"";position:absolute;top:0;bottom:0;right:0;width:46%;background:linear-gradient(180deg,var(--mint) 0%,#fff 100%);border-bottom-left-radius:120px;pointer-events:none;}
+  .hero .wrap{position:relative;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero-grid > *{min-width:0;}
+  .sent-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #cfe9e8;border-radius:999px;padding:7px 16px 7px 7px;font-family:var(--font-head);font-weight:700;font-size:.88rem;color:var(--teal-deep);box-shadow:var(--shadow-sm);margin-bottom:22px;}
+  .sent-badge .ck{width:24px;height:24px;border-radius:50%;background:var(--teal);display:inline-flex;align-items:center;justify-content:center;}
+  .sent-badge .ck svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;}
+  .sent-badge small{font-weight:600;color:var(--ink-soft);font-family:var(--font-body);font-size:.85rem;}
+  .hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);color:var(--teal-dark);margin-bottom:.4em;letter-spacing:-.01em;}
+  .hero h1 em{font-style:normal;color:var(--coral);position:relative;white-space:nowrap;}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.16em;background:var(--yellow);z-index:-1;border-radius:3px;opacity:.9;}
+  .hero .lead{font-size:1.12rem;color:var(--ink-soft);max-width:50ch;margin-bottom:0;}
+  .hero .lead strong{color:var(--teal-dark);}
+  .hero .next{font-family:var(--font-head);font-weight:700;color:var(--teal-deep);font-size:1.05rem;margin:18px 0 0;max-width:46ch;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px;}
+  .hero .micro{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:.86rem;font-weight:700;color:var(--teal-deep);}
+  .hero .micro span::before{content:"✓ ";color:var(--coral);}
+  .trust-row{display:flex;flex-wrap:wrap;gap:0 28px;margin-top:26px;padding-top:20px;border-top:1px solid #d9ecea;}
+  .trust-row div{font-size:.85rem;color:var(--ink-soft);}
+  .trust-row b{display:block;font-family:var(--font-head);font-size:1.3rem;color:var(--teal-dark);font-variant-numeric:tabular-nums;line-height:1.2;}
+  /* right column: video + floating inbox notification */
+  .media{position:relative;padding:34px 0 0 0;}
+  .video-frame{border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;background:#000;max-width:100%;box-shadow:0 24px 54px rgba(20,130,143,.22);border:5px solid #fff;}
+  .video-frame iframe{width:100%;height:100%;border:0;display:block;}
+  .notif{position:absolute;top:0;left:-18px;z-index:2;display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 16px 12px 12px;box-shadow:0 14px 34px rgba(20,130,143,.2);border:1px solid #e3f0ef;max-width:88%;animation:slideIn .6s ease both;}
+  .notif .ico{width:40px;height:40px;border-radius:11px;background:var(--coral);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .notif .ico svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+  .notif .t{font-family:var(--font-head);font-weight:700;font-size:.9rem;color:var(--ink);line-height:1.25;}
+  .notif .t small{display:block;font-family:var(--font-body);font-weight:600;color:var(--ink-soft);font-size:.8rem;margin-top:2px;}
+  .notif .time{margin-left:auto;font-size:.75rem;color:#9aabac;font-weight:600;align-self:flex-start;white-space:nowrap;}
+  @keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  .video-cap{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:var(--font-head);font-weight:600;font-size:.9rem;color:var(--teal-deep);}
+  .video-cap svg{width:16px;height:16px;fill:var(--coral);}
+  .poster{position:relative;width:100%;height:100%;border:0;cursor:pointer;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;color:#fff;font-family:var(--font-head);
+    background:radial-gradient(circle at 80% 20%,rgba(255,201,77,.35) 0%,rgba(255,201,77,0) 45%),radial-gradient(circle at 15% 85%,rgba(252,12,108,.45) 0%,rgba(252,12,108,0) 50%),linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);}
+  .poster-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+  .poster.has-thumb .poster-thumb{display:block;}
+  .poster.has-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,90,99,.05) 0%,rgba(13,90,99,.45) 100%);}
+  .poster.has-thumb .poster-brand,.poster.has-thumb .poster-title,.poster.has-thumb .poster-sub{display:none;}
+  .poster.has-thumb .poster-play{position:relative;z-index:1;}
+  .poster.has-thumb:hover .poster-thumb{transform:scale(1.03);}
+  .poster-thumb{transition:transform .3s ease;}
+  .poster-brand{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
+  .poster-title{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:800;line-height:1.15;}
+  .poster-sub{font-family:var(--font-body);font-size:.95rem;opacity:.9;margin-bottom:10px;}
+  .poster-play{width:68px;height:68px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.28);transition:transform .15s ease;}
+  .poster-play svg{width:28px;height:28px;fill:var(--coral);margin-left:4px;}
+  .poster:hover .poster-play{transform:scale(1.08);}
+  .poster:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px;}
+
+  /* trial strip */
+  .trial-strip{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%);color:#fff;padding-block:26px;}
+  .trial-strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .trial-strip h3{color:#fff;margin:0;font-size:1.3rem;}
+  .trial-strip h3 span{color:var(--yellow);}
+  .trial-strip ul{list-style:none;padding:0;margin:0;display:flex;gap:22px;flex-wrap:wrap;font-weight:700;font-size:.95rem;}
+  .trial-strip li::before{content:"✓ ";color:var(--yellow);font-weight:900;}
+  .trial-strip .btn{background:#fff;color:var(--teal-deep);box-shadow:0 8px 20px rgba(0,0,0,.15);}
+
+  /* features */
+  .features{background:var(--mint-2);}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;}
+  .feat-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px;border:1px solid #e9f4f3;text-align:center;min-width:0;}
+  .feat-card img{height:110px;width:auto;margin:0 auto 18px;}
+  .feat-card h3{font-size:1.15rem;}
+  .feat-card p{font-size:.96rem;color:var(--ink-soft);margin-bottom:0;}
+
+  /* trial offer list + CTA card (wireframe core) */
+  .offer{background:var(--cream);border-top:1px solid #f0e6d6;border-bottom:1px solid #f0e6d6;}
+  .offer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .offer-grid > *{min-width:0;}
+  .offer h2{font-size:clamp(1.9rem,3.6vw,2.8rem);}
+  .offer .intro{color:var(--ink-soft);max-width:50ch;}
+  .value-badge{display:inline-block;background:var(--yellow);color:var(--ink);font-family:var(--font-head);font-weight:800;font-size:.85rem;letter-spacing:.04em;padding:6px 14px;border-radius:999px;margin-bottom:16px;text-transform:uppercase;}
+  ul.freeitems{list-style:none;padding:0;margin:28px 0 0;}
+  ul.freeitems li{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #f1e6d2;border-radius:14px;padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow-sm);}
+  ul.freeitems .name{font-weight:700;color:var(--ink);flex:1;}
+  .offer .total{margin-top:18px;font-family:var(--font-head);font-weight:700;color:var(--teal-deep);}
+  .offer .total s{color:#9aabac;font-weight:600;}
+
+  .trial-card{background:#fff;border-radius:var(--radius);box-shadow:0 18px 40px rgba(252,12,108,.16);border:2px solid var(--coral);padding:36px 30px 30px;position:relative;text-align:center;}
+  .trial-card::before{content:"Get Your 14-Day Free Trial";position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-family:var(--font-head);font-weight:700;font-size:.85rem;padding:7px 18px;border-radius:999px;white-space:nowrap;letter-spacing:.03em;}
+  .trial-card h3{margin:8px 0 4px;font-size:1.35rem;}
+  .trial-card .sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:22px;}
+  .plan-row{display:flex;gap:12px;margin-bottom:18px;}
+  .plan{flex:1 1 0;min-width:0;background:var(--mint-2);border:1px solid #e3eeed;border-radius:12px;padding:14px 12px;}
+  .plan .name{font-family:var(--font-head);font-weight:600;font-size:.8rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .plan .price{font-family:var(--font-head);font-weight:800;font-size:1.7rem;color:var(--teal-dark);font-variant-numeric:tabular-nums;line-height:1.1;}
+  .plan .price small{font-size:.85rem;font-weight:600;color:var(--ink-soft);}
+  .plan .note{font-size:.82rem;color:var(--coral-deep);font-weight:700;margin-top:4px;}
+  .trial-card .but{font-family:var(--font-head);font-weight:700;color:var(--teal-deep);margin:0 0 16px;font-size:1rem;}
+  .trial-card .btn{width:100%;}
+  .trial-card .privacy-note{font-size:.8rem;color:#7d9294;margin:14px 0 0;}
+
+  /* reviews */
+  .testi{background:var(--teal-dark);color:#fff;text-align:center;padding-block:70px;}
+  .testi h2{color:#fff;}
+  .testi .rating{color:var(--yellow);font-size:1.4rem;letter-spacing:3px;}
+  .testi .rating small{display:block;color:#bdeeee;font-size:.9rem;letter-spacing:0;font-family:var(--font-head);margin-top:4px;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;text-align:left;}
+  .testi-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;min-width:0;}
+  .testi-card .stars{color:var(--yellow);font-size:1.1rem;letter-spacing:2px;margin-bottom:10px;}
+  .testi-card p{color:#eafcfb;font-size:1rem;font-style:italic;margin-bottom:14px;}
+  .testi-card .who{font-family:var(--font-head);font-weight:600;font-size:.95rem;color:#bdeeee;font-style:normal;}
+
+  /* final CTA */
+  .final-cta{background:linear-gradient(160deg,#fff 0%,var(--mint) 100%);text-align:center;}
+  .final-cta .card{max-width:760px;margin:0 auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:50px 40px;border:2px solid var(--coral);}
+  .final-cta .big{font-family:var(--font-head);font-weight:800;font-size:clamp(2.6rem,6vw,4rem);color:var(--coral-deep);line-height:1;margin:0;}
+  .final-cta .big small{display:block;font-size:1.1rem;color:var(--teal-dark);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:6px;}
+  .final-cta p{color:var(--ink-soft);max-width:52ch;margin:18px auto 26px;}
+  .final-cta .trust{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:.9rem;font-weight:700;color:var(--teal-deep);margin-top:20px;}
+  .final-cta .trust span::before{content:"✓ ";color:var(--coral);}
+
+  /* footer */
+  footer.site{background:var(--teal-dark);color:#dff6f5;padding-block:50px 26px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;align-items:start;}
+  .foot-grid > *{min-width:0;}
+  footer .flogo{display:inline-flex;align-items:center;background:#fff;padding:8px 12px;border-radius:12px;margin-bottom:16px;}
+  footer .flogo img{height:48px;}
+  footer .flogo .wordmark{font-family:var(--font-head);font-weight:800;color:var(--teal);}
+  footer h4{color:#fff;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer li{margin-bottom:10px;overflow-wrap:anywhere;}
+  footer a{color:#bdeeee;}
+  footer a:hover{color:#fff;}
+  .socials{display:flex;gap:14px;margin-top:6px;}
+  .socials a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;}
+  .socials a:hover{background:var(--coral);}
+  .socials svg{width:18px;height:18px;fill:currentColor;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:40px;padding-top:22px;text-align:center;font-size:.9rem;color:#a9dedd;}
+
+  /* sticky mobile trial bar */
+  .sticky-trial{display:none;position:fixed;bottom:0;left:0;right:0;z-index:50;background:#fff;border-top:1px solid #e8f2f1;box-shadow:0 -8px 24px rgba(20,130,143,.12);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));}
+  .sticky-trial .btn{width:100%;padding:14px;}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  @media(max-width:900px){
+    .hero-grid,.offer-grid{grid-template-columns:1fr;}
+    .hero-grid .media{order:-1;}
+    .hero::before{width:100%;border-radius:0;height:52%;bottom:auto;}
+    .notif{left:0;}
+    .feat-grid,.testi-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .trial-strip .wrap{justify-content:center;text-align:center;}
+    .trial-strip ul{justify-content:center;}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;padding:20px 24px;gap:16px;box-shadow:var(--shadow);}
+    .nav-links.open{display:flex;}
+    .nav-cta .btn-ghost{display:none;}
+    .menu-toggle{display:block;}
+  }
+  @media(max-width:560px){
+    body{font-size:16px;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));line-height:1.55;}
+    .wrap{padding-inline:18px;}
+    .section{padding-block:44px;}
+    h2{font-size:1.65rem;}
+    h3{font-size:1.2rem;}
+    .eyebrow{font-size:.78rem;}
+    .btn{padding:14px 24px;font-size:1rem;}
+    .btn-lg{padding:16px 24px;font-size:1.05rem;width:100%;}
+    .hero-cta{flex-direction:column;align-items:stretch;gap:10px;}
+    .hero-cta .btn{width:100%;}
+
+    /* announcement + nav */
+    .announce{font-size:.82rem;padding:9px 14px;line-height:1.4;}
+    .announce .tag{display:none;}
+    .navbar{padding:10px 16px;gap:10px;}
+    .logo img{height:38px;}
+    .logo .wordmark{font-size:1rem;}
+    .nav-cta .btn-coral{display:none;}
+    .menu-toggle{font-size:1.5rem;}
+
+    /* hero */
+    .hero{padding-block:28px 40px;}
+    .hero::before{height:46%;}
+    .hero-grid{gap:26px;}
+    .sent-badge{font-size:.82rem;margin-bottom:14px;}
+    .hero h1{font-size:1.9rem;line-height:1.18;}
+    .hero h1 em::after{height:.14em;}
+    .hero .lead{font-size:1rem;}
+    .hero .next{font-size:.98rem;margin-top:14px;}
+    .hero .micro{font-size:.8rem;gap:4px 14px;margin-top:12px;justify-content:center;}
+    .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;padding-top:16px;text-align:center;}
+    .trust-row div{font-size:.72rem;line-height:1.3;}
+    .trust-row b{font-size:1.1rem;}
+    .media{padding-top:0;}
+    .notif{position:static;margin-bottom:12px;max-width:100%;padding:10px 12px;border-radius:12px;animation:none;}
+    .notif .ico{width:34px;height:34px;}
+    .notif .t{font-size:.84rem;}
+    .notif .t small{font-size:.76rem;}
+    .video-frame{border-width:3px;border-radius:14px;}
+    .poster{padding:16px;gap:4px;}
+    .poster-brand{font-size:.68rem;}
+    .poster-title{font-size:1.15rem;}
+    .poster-sub{font-size:.82rem;margin-bottom:6px;}
+    .poster-play{width:54px;height:54px;}
+    .poster-play svg{width:22px;height:22px;}
+    .video-cap{font-size:.82rem;margin-top:10px;}
+
+    /* trial strip */
+    .trial-strip{padding-block:22px;}
+    .trial-strip h3{font-size:1.1rem;}
+    .trial-strip ul{gap:8px 16px;font-size:.85rem;}
+    .trial-strip .btn{width:100%;}
+
+    /* features */
+    .feat-grid{gap:16px;margin-top:28px;}
+    .feat-card{padding:22px 18px;}
+    .feat-card img{height:84px;}
+    .feat-card p{font-size:.92rem;}
+
+    /* offer */
+    .offer-grid{gap:30px;}
+    .offer h2{font-size:1.65rem;}
+    .offer .intro{font-size:.98rem;}
+    .value-badge{font-size:.74rem;padding:5px 12px;}
+    ul.freeitems{margin-top:20px;}
+    ul.freeitems li{padding:14px 16px;}
+    ul.freeitems .name{font-size:.95rem;}
+    .offer .total{font-size:.95rem;}
+    .trial-card{padding:32px 18px 24px;}
+    .trial-card::before{font-size:.76rem;padding:6px 14px;}
+    .trial-card h3{font-size:1.15rem;}
+    .trial-card .sub{font-size:.9rem;}
+    .plan-row{flex-direction:row;gap:10px;}
+    .plan{padding:12px 10px;}
+    .plan .price{font-size:1.4rem;}
+    .plan .note{font-size:.74rem;}
+    .trial-card .but{font-size:.92rem;}
+    .trial-card .privacy-note{font-size:.74rem;}
+
+    /* reviews */
+    .testi{padding-block:48px;}
+    .testi .rating{font-size:1.2rem;}
+    .testi-grid{gap:14px;margin-top:24px;}
+    .testi-card{padding:20px;}
+    .testi-card p{font-size:.95rem;}
+
+    /* final cta */
+    .final-cta .card{padding:32px 20px;}
+    .final-cta .big{font-size:2.6rem;}
+    .final-cta .big small{font-size:.9rem;}
+    .final-cta p{font-size:.98rem;}
+    .final-cta .trust{gap:8px 16px;font-size:.82rem;}
+
+    /* footer */
+    .foot-grid{grid-template-columns:1fr;gap:26px;}
+    footer.site{padding-block:38px 20px;}
+    .foot-bottom{margin-top:28px;font-size:.82rem;}
+
+    /* sticky bar */
+    .sticky-trial{display:block;}
+    .sticky-trial .btn{padding:14px;font-size:1rem;}
+  }
+  @media(max-width:380px){
+    .hero h1{font-size:1.7rem;}
+    .trust-row{grid-template-columns:1fr 1fr;}
+    .trust-row div:last-child{grid-column:span 2;}
+    .plan-row{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ANNOUNCEMENT BAR ============ -->
+<div class="announce">
+  <span class="tag">NEXT STEP</span> Try everything free for 14 days — no credit card required. <a href="https://www.speechtherapyplans.com/register">Start your free trial →</a>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <nav class="navbar">
+    <a class="logo" href="https://speechtherapyplans.com/">
+      <img src="https://speechtherapyplans.com/img/STP-logo.png" alt="Speech Therapy Plans logo" onerror="this.hidden=true;this.nextElementSibling.hidden=false;" />
+      <span class="wordmark" hidden>Speech Therapy Plans</span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="https://speechtherapyplans.com/">Home</a>
+      <a href="#features">Features</a>
+      <a href="https://speechtherapyplans.com/about">About Us</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://speechtherapyplans.com/login" class="btn btn-ghost">Log In</a>
+      <a href="https://www.speechtherapyplans.com/register" class="btn btn-coral">14-Day Free Trial</a>
+      <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO — thank you + brief info about brand & service ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="sent-badge"><span class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>You're in</div>
+        <h1>Your email is on the way.<br /><em>Check your inbox!</em></h1>
+        <p class="lead">Everything you just requested is heading to the email you entered. Give it a couple of minutes, and peek in your Promotions or Spam folder if it hasn't landed yet.</p>
+        <p class="next">While you wait, try the full Speech Therapy Plans platform free for 14 days.</p>
+        <div class="hero-cta">
+          <a href="https://www.speechtherapyplans.com/register" class="btn btn-coral btn-lg">Start My 14-Day Free Trial</a>
+          <a href="#trial" class="btn btn-ghost">See What's Inside</a>
+        </div>
+        <div class="micro"><span>No credit card</span><span>Cancel anytime</span><span>Built by a fellow SLP</span></div>
+        <div class="trust-row">
+          <div><b>2,000+</b>therapy materials</div>
+          <div><b>PreK–8th</b>plans, every school day</div>
+          <div><b>250 hrs</b>saved per school year</div>
+        </div>
+      </div>
+      <div class="media">
+        <div class="notif">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></span>
+          <span class="t">Speech Therapy Plans<small>Your free resource is here — open me 🎉</small></span>
+          <span class="time">now</span>
+        </div>
+        <div class="video-frame" id="stpVideo">
+          <button class="poster" type="button" onclick="playStpVideo()" aria-label="Play the Speech Therapy Plans tour">
+            <img class="poster-thumb" src="https://img.youtube.com/vi/-1oh2u1zxXw/maxresdefault.jpg" alt="" onload="this.parentNode.classList.add('has-thumb')" onerror="this.remove()" />
+            <span class="poster-brand">Speech Therapy Plans</span>
+            <span class="poster-title">Less Stress, More Success</span>
+            <span class="poster-sub">See how SLPs plan a whole week in minutes</span>
+            <span class="poster-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
+        <div class="video-cap"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch the 2-minute tour while you wait</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE TRIAL HIGHLIGHT STRIP ============ -->
+<section class="trial-strip">
+  <div class="wrap">
+    <h3>Your first <span>14 days are on us.</span></h3>
+    <ul>
+      <li>Full platform access</li>
+      <li>No credit card required</li>
+      <li>Cancel anytime</li>
+    </ul>
+    <a href="https://www.speechtherapyplans.com/register" class="btn">Claim Free Trial</a>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section features" id="features">
+  <div class="wrap center">
+    <p class="eyebrow">Everything in one place</p>
+    <h2>What is Speech Therapy Plans?</h2>
+    <p style="color:var(--ink-soft);max-width:60ch;margin:0 auto;">Over 2,000 therapy materials, pre-made plans for Pre-K to 8th grade, and a caseload system that handles data, IEP prep, and Medicaid billing.</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <img src="https://speechtherapyplans.com/img/home/caseload.png" alt="" onerror="this.hidden=true" />
+        <h3>Caseload Management</h3>
+        <p>Track student progress, log session data, prep IEPs, and generate Medicaid statements in minutes.</p>
+      </div>
+      <div class="feat-card">
+        <img src="https://speechtherapyplans.com/img/home/complete.png" alt="" onerror="this.hidden=true" />
+        <h3>Pre-made Therapy Plans</h3>
+        <p>Ready-to-use plans for every day of the school year, with directions, materials, and video tutorials.</p>
+      </div>
+      <div class="feat-card">
+        <img src="https://speechtherapyplans.com/img/home/planing.png" alt="" onerror="this.hidden=true" />
+        <h3>2,000+ Therapy Materials</h3>
+        <p>Digital resources, printables, games, and book companions for articulation, language, fluency, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRIAL OFFER LIST + CTA CARD (wireframe core) ============ -->
+<section class="section offer" id="trial">
+  <div class="wrap">
+    <div class="offer-grid">
+      <div>
+        <span class="value-badge">$2,000+ value — free for 14 days</span>
+        <h2>Everything Inside Your Free Trial</h2>
+        <p class="intro">Not a stripped-down demo. You get the same tools paying members use, from day one.</p>
+        <ul class="freeitems">
+          <li><span class="name">1,000+ Therapy Materials — Games, No-Prep, Book Companions &amp; Digital</span></li>
+          <li><span class="name">Pre-Made Therapy Plans — Pre-K to 8th Grade, Every School Day</span></li>
+          <li><span class="name">Caseload System — Scheduling, Goal Generator, Data &amp; Medicaid Statements</span></li>
+          <li><span class="name">200+ Built-In Assessments, Progress Monitoring &amp; PD Videos</span></li>
+        </ul>
+        <p class="total">Membership after trial: <s>$24/mo</s> &nbsp;→&nbsp; $0 for your first 14 days.</p>
+      </div>
+
+      <div class="trial-card">
+        <h3>Try it free, then pick your plan</h3>
+        <p class="sub">Same full access either way. Decide only after your 14 days.</p>
+        <div class="plan-row">
+          <div class="plan">
+            <div class="name">Monthly</div>
+            <div class="price">$24<small> / mo</small></div>
+            <div class="note">Unlimited downloads</div>
+          </div>
+          <div class="plan">
+            <div class="name">Annual</div>
+            <div class="price">$227<small> / yr</small></div>
+            <div class="note">Save 20% vs monthly</div>
+          </div>
+        </div>
+        <p class="but">…but you can try everything for 14 days first, completely free.</p>
+        <a href="https://www.speechtherapyplans.com/register" class="btn btn-coral btn-lg">Start My 14-Day Free Trial</a>
+        <p class="privacy-note">No credit card · No commitment · Cancel anytime · HIPAA-compliant</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="testi" id="reviews">
+  <div class="wrap">
+    <div class="rating">★★★★★<small>Rated 5/5 by SLPs across the U.S.</small></div>
+    <h2 style="margin-top:14px;">What SLPs Are Saying About Speech Therapy Plans…</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>“This has completely changed how I plan. I get hours of my week back and my sessions are more organized than ever.”</p>
+        <div class="who">— Verified SLP Member</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>“The premade plans and materials library are a lifesaver. Everything I need for mixed groups is right there.”</p>
+        <div class="who">— Verified SLP Member</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>“Caseload management and Medicaid billing used to eat my evenings. Now it takes minutes.”</p>
+        <div class="who">— Verified SLP Member</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL FREE TRIAL CTA ============ -->
+<section class="section final-cta">
+  <div class="wrap">
+    <div class="card">
+      <p class="big">14 DAYS<small>Completely free</small></p>
+      <p>Your free trial could save you over 7 hours on therapy planning alone. In minutes you'll have a month's worth of research-backed plans, 1,000+ materials, and a caseload system ready to go.</p>
+      <a href="https://www.speechtherapyplans.com/register" class="btn btn-coral btn-lg">Start My Free Trial</a>
+      <div class="trust"><span>No credit card</span><span>No commitment</span><span>Cancel anytime</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="flogo" href="https://speechtherapyplans.com/">
+          <img src="https://speechtherapyplans.com/img/STP-logo.png" alt="Speech Therapy Plans logo" onerror="this.hidden=true;this.nextElementSibling.hidden=false;" />
+          <span class="wordmark" hidden>Speech Therapy Plans</span>
+        </a>
+        <p style="color:#bdeeee;">The all-in-one platform designed by a fellow SLP.</p>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="https://speechtherapyplans.com/contact">Contact Form</a></li>
+          <li>Jennifer@SpeechTherapyPlans.com</li>
+          <li><a href="https://speechtherapyplans.com/help">Help &amp; FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Privacy Policy</h4>
+        <ul>
+          <li><a href="https://speechtherapyplans.com/privacy">Privacy Policy</a></li>
+          <li><a href="https://speechtherapyplans.com/cancel">Cancellation Form</a></li>
+          <li><a href="https://speechtherapyplans.com/school-districts">School Districts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Socials</h4>
+        <div class="socials">
+          <a href="https://www.facebook.com/SpeechTherapyPlans" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.instagram.com/speechtherapyplans/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .4 1.4.8.4.4.6.8.8 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.4 1-.8 1.4-.4.4-.8.6-1.4.8-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.4-1.4-.8-.4-.4-.6-.8-.8-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.4-1 .8-1.4.4-.4.8-.6 1.4-.8.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Speech Therapy Plans. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE TRIAL BAR ============ -->
+<div class="sticky-trial">
+  <a href="https://www.speechtherapyplans.com/register" class="btn btn-coral">Start 14-Day Free Trial</a>
+</div>
+
+<script>
+  function playStpVideo(){
+    var box=document.getElementById('stpVideo');
+    box.innerHTML='<iframe src="https://www.youtube.com/embed/-1oh2u1zxXw?autoplay=1&rel=0" title="Speech Therapy Plans overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  }
+</script>
+</body>
+</html>
