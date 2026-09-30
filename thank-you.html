@@ -175,8 +175,10 @@
   .testi h2{color:#fff;}
   .testi .rating{color:var(--yellow);font-size:1.4rem;letter-spacing:3px;}
   .testi .rating small{display:block;color:#bdeeee;font-size:.9rem;letter-spacing:0;font-family:var(--font-head);margin-top:4px;}
-  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;text-align:left;}
-  .testi-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;min-width:0;}
+  .testi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:34px;text-align:left;}
+  .testi-card{grid-column:span 2;display:flex;flex-direction:column;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;min-width:0;}
+  .testi-card:nth-child(4){grid-column:2 / span 2;}
+  .testi-card .who{margin-top:auto;}
   .testi-card .stars{color:var(--yellow);font-size:1.1rem;letter-spacing:2px;margin-bottom:10px;}
   .testi-card p{color:#eafcfb;font-size:1rem;font-style:italic;margin-bottom:14px;}
   .testi-card .who{font-family:var(--font-head);font-weight:600;font-size:.95rem;color:#bdeeee;font-style:normal;}
@@ -219,6 +221,7 @@
     .hero::before{width:100%;border-radius:0;height:52%;bottom:auto;}
     .notif{left:0;}
     .feat-grid,.testi-grid{grid-template-columns:1fr;}
+    .testi-card,.testi-card:nth-child(4){grid-column:auto;}
     .foot-grid{grid-template-columns:1fr 1fr;}
     .trial-strip .wrap{justify-content:center;text-align:center;}
     .trial-strip ul{justify-content:center;}
@@ -492,18 +495,28 @@
     <div class="testi-grid">
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>“This has completely changed how I plan. I get hours of my week back and my sessions are more organized than ever.”</p>
-        <div class="who">— Verified SLP Member</div>
+        <p>“Your website has been so very helpful to me and I can not believe how much work you have put into creating and organizing all of these activities! I love the book companion activities and all the creative ideas. I will recommend your site to all of my SLP friends.”</p>
+        <div class="who">— Susie S.</div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>“The premade plans and materials library are a lifesaver. Everything I need for mixed groups is right there.”</p>
-        <div class="who">— Verified SLP Member</div>
+        <p>“Thank you so much for your product! I have been using it faithfully for years.”</p>
+        <div class="who">— Lindsey B.</div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>“Caseload management and Medicaid billing used to eat my evenings. Now it takes minutes.”</p>
-        <div class="who">— Verified SLP Member</div>
+        <p>“When I joined Speech Therapy Plans, it helped me organize my favorite materials and activities into groups by level and function, stay organized and feel prepared for any group. I love that I can go into the database and quickly find something for any student on my caseload.”</p>
+        <div class="who">— Heather H.</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>“I use the website everyday!”</p>
+        <div class="who">— Karen G.</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>“OMG I wish I had found this sooner, you’re amazing!!”</p>
+        <div class="who">— Andrea H.</div>
       </div>
     </div>
   </div>
